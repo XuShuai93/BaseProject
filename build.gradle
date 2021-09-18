@@ -1,0 +1,21 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    apply from: rootProject.file('gradle/base.gradle')
+    apply from: rootProject.file('gradle/network.gradle')
+    apply from: rootProject.file('gradle/config.gradle')
+
+    addRepositories(repositories)
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+    }
+}
+
+allprojects {
+    addRepositories(repositories)
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

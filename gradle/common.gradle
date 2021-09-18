@@ -1,0 +1,106 @@
+apply plugin: "kotlin-android"
+apply plugin: 'kotlin-kapt'
+android {
+    compileSdkVersion rootProject.ext.android_version.compileSdkVersion
+    buildToolsVersion rootProject.ext.android_version.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android_version.minSdkVersion
+        targetSdkVersion rootProject.ext.android_version.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [
+                        //Room
+                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                        "room.incremental"     : "true",
+                        "room.expandProjection": "true",
+                ]
+            }
+        }
+
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+
+        ndk {
+            // 添加项目所需CPU类型的最小集
+            abiFilters "armeabi-v7a" //, "armeabi","x86"
+        }
+
+        buildConfigField("String", "LOGIN_URL", "\"${rootProject.LOGIN_URL}\"")
+        buildConfigField("String", "TASK_URL", "\"${rootProject.TASK_URL}\"")
+        buildConfigField("String", "BASE_CONFIG_URL", "\"${rootProject.BASE_CONFIG_URL}\"")
+        buildConfigField("String", "BASE_RULE_URL", "\"${rootProject.BASE_RULE}\"")
+        buildConfigField("boolean", "HTTP_DEBUG", "${rootProject.ext.DEBUG}")
+        buildConfigField("String", "HTTP_H5", "\"${rootProject.HTTP_H5}\"")
+        buildConfigField("String", "HTTP_AWARD", "\"${rootProject.HTTP_AWARD}\"")
+        buildConfigField("String", "HTTP_LUCK_GOLD", "\"${rootProject.HTTP_LUCK_GOLD}\"")
+        buildConfigField("String", "HTTP_GAME_URL", "\"${rootProject.HTTP_GAME_URL}\"")
+        buildConfigField("String", "APP_IDENTIFICATION", "\"${rootProject.APP_IDENTIFICATION}\"")
+        buildConfigField("String", "AD_CONFIG", "\"${rootProject.AD_CONFIG}\"")
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'key0'
+            keyPassword '123456'
+            storeFile rootProject.file('keystore/jkzaaaa.jks')
+            storePassword '123456'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    buildFeatures {
+        //开启dataBinding
+//        dataBinding  true
+        //开启viewBinding
+        viewBinding true
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.android_version.java_version
+        targetCompatibility rootProject.ext.android_version.java_version
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    testImplementation rootProject.ext.androidx["junit"]
+    androidTestImplementation rootProject.ext.androidx["androidx.test.ext-junit"]
+    androidTestImplementation rootProject.ext.androidx["androidx.test.espresso:espresso-core"]
+
+    kapt rootProject.ext.androidx["androidx.lifecycle-common-java8"]
+    kapt rootProject.ext.androidx["androidx.room-compiler"]
+    kapt rootProject.ext.dependencies["arouter-compiler"]
+    kapt rootProject.ext.dependencies["glide-compiler"]
+}

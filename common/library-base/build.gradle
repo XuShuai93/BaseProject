@@ -1,0 +1,27 @@
+apply from: rootProject.file("gradle/library.gradle")
+
+dependencies {
+    api rootProject.ext.androidx["androidx.core"]
+    api rootProject.ext.androidx["androidx.core-ktx"]
+    api rootProject.ext.androidx["androidx.activity"]
+    api rootProject.ext.androidx["androidx.fragment"]
+    api rootProject.ext.androidx["androidx.appcompat"]
+    api rootProject.ext.androidx["androidx.annotation"]
+    api rootProject.ext.androidx["androidx.material"]
+    api rootProject.ext.androidx["androidx.constraintlayout"]
+    api rootProject.ext.androidx["androidx.recyclerview"]
+
+    api rootProject.ext.androidx["androidx.lifecycle-runtime"]
+    api rootProject.ext.androidx["androidx.lifecycle-runtime-ktx"]
+    api rootProject.ext.androidx["androidx.lifecycle-viewmodel-ktx"]
+    api rootProject.ext.androidx["androidx.lifecycle-livedata-ktx"]
+    api rootProject.ext.androidx["androidx.lifecycle-process"]
+
+    api rootProject.ext.dependencies["kotlin-coroutines"]
+    api rootProject.ext.dependencies["kotlin-coroutines-android"]
+
+    api rootProject.ext.androidx["androidx.room"]
+    api rootProject.ext.dependencies["glide"]
+
+    api rootProject.ext.dependencies["arouter-api"]
+}
