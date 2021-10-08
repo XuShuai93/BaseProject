@@ -1,4 +1,3 @@
 rootProject.name = "BaseProject"
 include ':app'
-include ':common:library-base'
-include ':business:module-demo'
+include ':common:library-framework'

@@ -22,10 +22,11 @@ ext {
             lifecycle      : "2.3.1",
             room           : "2.3.0",
             navigation     : "2.3.3",
-            okhttp         : "4.9.0",
+            okhttp         : "4.9.2",
             retrofit       : "2.9.0",
+            glide          : "4.12.0",
             arouter        : "1.5.2",
-            kotlin         : "1.5.30",
+            kotlin         : "1.5.31",
             kolinCoroutines: "1.5.1",
             rxlifecycle    : "4.0.2",
             immersionbar   : "3.0.0",
@@ -84,7 +85,7 @@ ext {
             //endregion
 
             //region navigation
-            "androidx.navigation-fragment"                 : "androidx.navigation:navigation-fragment:$versions.navigation",
+            "androidx.navigation-fragment"                  : "androidx.navigation:navigation-fragment:$versions.navigation",
             "androidx.navigation-ui"                        : "androidx.navigation:navigation-ui:$versions.navigation",
             "androidx.navigation-dynamic-features-fragment ": "androidx.navigation:navigation-dynamic-features-fragment:$versions.navigation",
             //endregion
@@ -92,8 +93,7 @@ ext {
     ]
 
     //依赖第三方配置
-    dependencies = [
-
+    dependencie = [
             //region kotlin 协程
             "kotlin-coroutines"            : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kolinCoroutines",
             "kotlin-coroutines-android"    : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kolinCoroutines",
@@ -110,17 +110,17 @@ ext {
 
             //OkHttp
             "okhttp"                       : "com.squareup.okhttp3:okhttp:$versions.okhttp",
-            "okHttp-logging"               : "com.squareup.okhttp3:logging-interceptor:$versions.okhttp",
+            "okhttp-logging-interceptor"               : "com.squareup.okhttp3:logging-interceptor:$versions.okhttp",
             "okio"                         : "com.squareup.okio:okio:1.17.2",
 
             //glide
-            "glide"                        : "com.github.bumptech.glide:glide:4.12.0",
-            "glide-compiler"               : "com.github.bumptech.glide:compiler:4.12.0",
+            "glide"                        : "com.github.bumptech.glide:glide:$versions.glide",
+            "glide-compiler"               : "com.github.bumptech.glide:compiler:$versions.glide",
             "glide-transformations"        : "jp.wasabeef:glide-transformations:4.3.0",
 
             //region Rx系列
-            "rxjava3"                      : "io.reactivex.rxjava2:rxjava:3.0.11",
-            "rxandroid"                    : "io.reactivex.rxjava2:rxandroid:3.0.0",
+            "rxjava3"                      : "io.reactivex.rxjava3:rxjava:3.1.1",
+            "rxandroid"                    : "io.reactivex.rxjava3:rxandroid:3.0.0",
             "rxBinding"                    : "com.jakewharton.rxbinding4:rxbinding:4.0.0",
             "rxpermissions"                : "com.github.tbruyelle:rxpermissions:0.10.2",
             //RxJava生命周期
