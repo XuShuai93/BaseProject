@@ -2,6 +2,9 @@
 apply plugin: 'com.android.library'
 apply from: rootProject.file('gradle/common.gradle')
 
+
+apply from: rootProject.file('gradle/field.gradle')
+
 android {
     defaultConfig {
         minSdkVersion rootProject.ext.android_version.minSdkVersion

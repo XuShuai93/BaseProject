@@ -1,0 +1,40 @@
+apply from: rootProject.file("gradle/library.gradle")
+apply plugin: 'kotlin-android'
+
+dependencies {
+    api rootProject.ext.androidx["androidx.core"]
+    api rootProject.ext.androidx["androidx.core-ktx"]
+    api rootProject.ext.androidx["androidx.activity"]
+    api rootProject.ext.androidx["androidx.fragment"]
+    api rootProject.ext.androidx["androidx.appcompat"]
+    api rootProject.ext.androidx["androidx.annotation"]
+    api rootProject.ext.androidx["androidx.material"]
+    api rootProject.ext.androidx["androidx.constraintlayout"]
+    api rootProject.ext.androidx["androidx.recyclerview"]
+    api rootProject.ext.androidx["androidx.viewpager"]
+    api rootProject.ext.androidx["androidx.viewpager2"]
+
+    api rootProject.ext.androidx["androidx.lifecycle-runtime"]
+    api rootProject.ext.androidx["androidx.lifecycle-runtime-ktx"]
+    api rootProject.ext.androidx["androidx.lifecycle-viewmodel-ktx"]
+    api rootProject.ext.androidx["androidx.lifecycle-livedata-ktx"]
+    api rootProject.ext.androidx["androidx.lifecycle-process"]
+
+    api rootProject.ext.androidx["androidx.room"]
+
+    api rootProject.ext.dependencie["kotlin-coroutines"]
+    api rootProject.ext.dependencie["kotlin-coroutines-android"]
+
+    //网络请求
+    api rootProject.ext.dependencie["okhttp"]
+    api rootProject.ext.dependencie["okhttp-logging-interceptor"]
+    api rootProject.ext.dependencie["retrofit"]
+    api rootProject.ext.dependencie["retrofit-converter-gson"]
+    api rootProject.ext.dependencie["retrofit-adapter-rxjava2"]
+
+    api rootProject.ext.dependencie["logger"]
+
+
+    api rootProject.ext.dependencie["glide"]
+    api rootProject.ext.dependencie["arouter-api"]
+}

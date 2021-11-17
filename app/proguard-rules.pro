@@ -64,17 +64,17 @@
 -keep public class * extends androidx.appcompat.app.AppCompatActivity
 -keep public class * extends androidx.lifecycle.ViewModel
 -keep class * extends androidx.databinding.BaseObservable{*;}
--keep class * extends com.donews.base.viewmodel.MvmBaseViewModel{*;}
--keep class * extends com.donews.base.viewmodel.BaseLiveDataViewModel{*;}
--keep class * extends com.donews.base.activity.MvvmBaseActivity{*;}
--keep class * extends com.donews.base.activity.MvvmBaseLiveDataActivity{*;}
+-keep class * extends com.adair.base.viewmodel.MvmBaseViewModel{*;}
+-keep class * extends com.adair.base.viewmodel.BaseLiveDataViewModel{*;}
+-keep class * extends com.adair.base.activity.MvvmBaseActivity{*;}
+-keep class * extends com.adair.base.activity.MvvmBaseLiveDataActivity{*;}
 
 
 -keep class **Listener
 -keep public class * extends com.platform.dai.webview.CommonJSInterface{ *;}
 
 #webview
--keep class com.donews.web.javascript.** { *; }
+-keep class com.adair.web.javascript.** { *; }
 
 
 #androidx 配置
@@ -530,14 +530,14 @@ public static final int *;
 -keep class * implements com.alibaba.android.arouter.facade.template.IProvider
 
 # 不混淆的文件
--keep class com.donews.common.CommonModuleInit{*;}
--keep class com.donews.main.application.MainModuleInit{*;}
--keep class com.donews.main.ui.** { *; }
--keep class com.donews.common.download.**{*;}
--keep class com.donews.web.base.WebConfig{*;}
+-keep class com.adair.common.CommonModuleInit{*;}
+-keep class com.adair.main.application.MainModuleInit{*;}
+-keep class com.adair.main.ui.** { *; }
+-keep class com.adair.common.download.**{*;}
+-keep class com.adair.web.base.WebConfig{*;}
 -keep  class * extends androidx.lifecycle.ViewModel{*;}
 -keep  class com.wifi.wfdj.viewmodel.WifiViewModel{*;}
--keep class * extends com.donews.common.contract.BaseCustomViewModel{*;}
+-keep class * extends com.adair.common.contract.BaseCustomViewModel{*;}
 
 
 #请避免混淆Bugly，在Proguard混淆文件中增加以下配置：
@@ -545,39 +545,39 @@ public static final int *;
 -keep public class com.tencent.bugly.**{*;}
 
 #充电模块
--keep class com.donews.home.bean.**{*;}
--keep class com.donews.home.viewModel.**{*;}
+-keep class com.adair.home.bean.**{*;}
+-keep class com.adair.home.viewModel.**{*;}
 
 # keeplive模块
--keep class  com.donews.alive.bean.**{*;}
--keep class com.donews.alive.KeepAlive{*;}
+-keep class  com.adair.alive.bean.**{*;}
+-keep class com.adair.alive.KeepAlive{*;}
 
 #sdk模块
 -keep class com.dn.sdk.bean.**{*;}
 -keep class com.dn.sdk.AdLoadManager{*;}
 
 #netWork 模块
--keep  class  com.donews.network.model.**{*;}
--keep  class  com.donews.network.cache.stategy.**{*;}
+-keep  class  com.adair.network.model.**{*;}
+-keep  class  com.adair.network.cache.stategy.**{*;}
 
 # common 模块
 #-keep class com.donews.common.adapter.CommonBindingAdapters{*;}
--keep class com.donews.common.contract.**{*;}
+-keep class com.adair.common.contract.**{*;}
 
 # Arouter 模块
 -keep class com.dn.drouter.**{*;}
 
 # dialog 模块
--keep class com.donews.dialog.**{*;}
+-keep class com.adair.dialog.**{*;}
 
 # login 模块
--keep class com.donews.login.provider.**{*;}
+-keep class com.adair.login.provider.**{*;}
 
 # mine模块
--keep class com.donews.mine.provider.**{*;}
+-keep class com.adair.mine.provider.**{*;}
 
 # 成语模块
--keep class com.donews.guessword.bean.**{*;}
+-keep class com.adair.guessword.bean.**{*;}
 
 
 # 视频播放混淆文件
@@ -589,7 +589,7 @@ public static final int *;
 -dontwarn com.shuyu.gsyvideoplayer.utils.**
 -keep class tv.danmaku.ijk.** { *; }
 -dontwarn tv.danmaku.ijk.**
--keep class com.donews.video.player.SampleCoverVideo{*;}
+-keep class com.adair.video.player.SampleCoverVideo{*;}
 
 -keep public class * extends android.view.View{
     *** get*();

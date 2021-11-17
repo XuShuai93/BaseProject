@@ -39,9 +39,9 @@ android {
 
 dependencies {
     if (rootProject.ext.isBuildModule) {
-        implementation project(path: ':common:library-framework')
+        implementation project(path: ':common:library-core')
     } else {
-        implementation project(path: ':common:library-framework')
+        implementation project(path: ':common:library-core')
     }
 }
 
