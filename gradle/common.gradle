@@ -1,5 +1,7 @@
 apply plugin: "kotlin-android"
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
+
 android {
     compileSdkVersion rootProject.ext.android_version.compileSdkVersion
     buildToolsVersion rootProject.ext.android_version.buildToolsVersion
@@ -41,10 +43,10 @@ android {
 
     signingConfigs {
         release {
-            keyAlias 'key0'
-            keyPassword '123456'
-            storeFile rootProject.file('keystore/jkzaaaa.jks')
-            storePassword '123456'
+            keyAlias 'fairyorchard'
+            keyPassword 'cdyf1214'
+            storeFile rootProject.file('keystore/fairyorchard.jks')
+            storePassword 'cdyf1214'
             v1SigningEnabled true
             v2SigningEnabled true
         }
@@ -65,7 +67,7 @@ android {
 
     buildFeatures {
         //开启dataBinding
-//        dataBinding  true
+        dataBinding  true
         //开启viewBinding
         viewBinding true
     }

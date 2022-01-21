@@ -2,7 +2,9 @@ package com.adair.core2.base.function
 
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentManager.FragmentLifecycleCallbacks
@@ -14,61 +16,28 @@ import androidx.fragment.app.FragmentManager.FragmentLifecycleCallbacks
  * @version v1.0
  * @date 2021/11/5 10:09
  */
-class BaseFragmentFunction : FragmentLifecycleCallbacks() {
+class BaseFragmentFunction {
+    fun onAttached(manager: FragmentManager, fragment: Fragment, context: Context) {}
 
-    override fun onFragmentPreAttached(fm: FragmentManager, f: Fragment, context: Context) {
-        super.onFragmentPreAttached(fm, f, context)
-    }
+    fun onCreated(manager: FragmentManager, fragment: Fragment, savedInstanceState: Bundle?) {}
 
-    override fun onFragmentAttached(fm: FragmentManager, f: Fragment, context: Context) {
-        super.onFragmentAttached(fm, f, context)
-    }
+    fun onViewCreated(manager: FragmentManager, fragment: Fragment, iew: View, savedInstanceState: Bundle?) {}
 
-    override fun onFragmentPreCreated(fm: FragmentManager, f: Fragment, savedInstanceState: Bundle?) {
-        super.onFragmentPreCreated(fm, f, savedInstanceState)
-    }
+    fun onStarted(manager: FragmentManager, fragment: Fragment) {}
 
-    override fun onFragmentCreated(fm: FragmentManager, f: Fragment, savedInstanceState: Bundle?) {
-        super.onFragmentCreated(fm, f, savedInstanceState)
-    }
+    fun onResumed(manager: FragmentManager, fragment: Fragment) {}
 
-    override fun onFragmentActivityCreated(fm: FragmentManager, f: Fragment, savedInstanceState: Bundle?) {
-        super.onFragmentActivityCreated(fm, f, savedInstanceState)
-    }
+    fun onPaused(manager: FragmentManager, fragment: Fragment) {}
 
-    override fun onFragmentViewCreated(fm: FragmentManager, f: Fragment, v: View, savedInstanceState: Bundle?) {
-        super.onFragmentViewCreated(fm, f, v, savedInstanceState)
-    }
+    fun onStopped(manager: FragmentManager, fragment: Fragment) {}
 
-    override fun onFragmentStarted(fm: FragmentManager, f: Fragment) {
-        super.onFragmentStarted(fm, f)
-    }
+    fun onViewDestroyed(manager: FragmentManager, fragment: Fragment) {}
 
-    override fun onFragmentResumed(fm: FragmentManager, f: Fragment) {
-        super.onFragmentResumed(fm, f)
-    }
+    fun onDestroyed(manager: FragmentManager, fragment: Fragment) {}
 
-    override fun onFragmentPaused(fm: FragmentManager, f: Fragment) {
-        super.onFragmentPaused(fm, f)
-    }
+    fun onDetached(manager: FragmentManager, fragment: Fragment) {}
 
-    override fun onFragmentStopped(fm: FragmentManager, f: Fragment) {
-        super.onFragmentStopped(fm, f)
-    }
+    fun onSaveInstanceStated(manager: FragmentManager, fragment: Fragment, outState: Bundle) {}
 
-    override fun onFragmentSaveInstanceState(fm: FragmentManager, f: Fragment, outState: Bundle) {
-        super.onFragmentSaveInstanceState(fm, f, outState)
-    }
-
-    override fun onFragmentViewDestroyed(fm: FragmentManager, f: Fragment) {
-        super.onFragmentViewDestroyed(fm, f)
-    }
-
-    override fun onFragmentDestroyed(fm: FragmentManager, f: Fragment) {
-        super.onFragmentDestroyed(fm, f)
-    }
-
-    override fun onFragmentDetached(fm: FragmentManager, f: Fragment) {
-        super.onFragmentDetached(fm, f)
-    }
+    fun setUserVisibleHinted(manager: FragmentManager, fragment: Fragment, isVisibleToUser: Boolean) {}
 }

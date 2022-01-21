@@ -12,43 +12,57 @@ import android.os.Bundle
  * @version v1.0
  * @date 2021/11/5 10:03
  */
-open class BaseActivityFunction : Application.ActivityLifecycleCallbacks {
+open class BaseActivityFunction {
 
-    fun onNewIntent(intent: Intent) {}
-
-    override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+    fun onNewIntent(activity: Activity, intent: Intent?) {
 
     }
 
-    override fun onActivityStarted(activity: Activity) {
+    fun onCreated(activity: Activity, savedInstanceState: Bundle?) {
 
     }
 
-    override fun onActivityResumed(activity: Activity) {
+    fun onRestarted(activity: Activity) {
 
     }
 
-    override fun onActivityPaused(activity: Activity) {
+    fun onStarted(activity: Activity) {
 
     }
 
-    override fun onActivityStopped(activity: Activity) {
+    fun onResumed(activity: Activity) {
 
     }
 
-    override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
+    fun onActivityResult(activity: Activity,requestCode: Int, resultCode: Int, data: Intent?) {
 
     }
 
-    override fun onActivityDestroyed(activity: Activity) {
+    fun onPaused(activity: Activity) {
 
     }
 
-    fun onFinish(activity: Activity) {}
+    fun onStopped(activity: Activity) {
 
-    fun onBackPressed(activity: Activity): Boolean {
-        return false
     }
 
-    fun onWindowFocusChanged(activity: Activity) {}
+    fun onSaveInstanceState(activity: Activity, outState: Bundle) {
+
+    }
+
+    fun onRestoreInstanceState(activity: Activity, savedInstanceState: Bundle) {
+
+    }
+
+    fun onDestroyed(activity: Activity) {
+
+    }
+
+    fun onFinish(activity: Activity) {
+
+    }
+
+    fun onWindowFocusChanged(activity: Activity, hasFocus: Boolean) {
+
+    }
 }

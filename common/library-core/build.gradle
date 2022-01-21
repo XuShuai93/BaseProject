@@ -34,7 +34,6 @@ dependencies {
 
     api rootProject.ext.dependencie["logger"]
 
-
     api rootProject.ext.dependencie["glide"]
     api rootProject.ext.dependencie["arouter-api"]
 }
