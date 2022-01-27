@@ -1,4 +1,3 @@
 rootProject.name = "BaseProject"
 include ':app'
 include ':common:library-core'
-include ':common:library-utils'

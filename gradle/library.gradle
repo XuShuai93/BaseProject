@@ -1,8 +1,6 @@
 //通过isBuildModule这个变量来确定每个模块是单独运行还是以Library的形式加载到整个App
 apply plugin: 'com.android.library'
 apply from: rootProject.file('gradle/common.gradle')
-
-
 apply from: rootProject.file('gradle/field.gradle')
 
 android {

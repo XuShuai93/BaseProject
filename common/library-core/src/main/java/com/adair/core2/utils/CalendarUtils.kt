@@ -1,4 +1,4 @@
-package com.adair.utils
+package com.adair.core2.utils
 
 import android.content.ContentUris
 import android.content.ContentValues
@@ -21,7 +21,6 @@ import java.util.*
  * @date 2021/10/18 16:42
  */
 
-@SuppressWarnings("unused")
 object CalendarUtils {
 
     private val TAG = CalendarUtils::class.java.simpleName
@@ -40,6 +39,7 @@ object CalendarUtils {
     /**
      * 检查是否存在现有日历账户，存在则返回账户id，否则返回-1
      */
+    @JvmStatic
     fun checkCalendarAccount(context: Context): Long {
         var result = -1L
         val userCourse = context.contentResolver.query(CALENDAR_URL, null, null, null, null)
@@ -66,6 +66,7 @@ object CalendarUtils {
     /***
      * 添加一个日志账号，成功返回账号id，错误返回-1
      */
+    @JvmStatic
     fun addCalendarAccount(context: Context): Long {
         val timeZone = TimeZone.getDefault()
         val contentValues = ContentValues().apply {
@@ -100,6 +101,7 @@ object CalendarUtils {
     /**
      * 检查是否已经添加了日历账户，如果没有添加先添加一个日历账户再查询
      */
+    @JvmStatic
     fun checkAndAddCalendarAccount(context: Context): Long {
         val oldId = checkCalendarAccount(context)
         if (oldId > 0) {
@@ -126,6 +128,7 @@ object CalendarUtils {
      * @param rrule String 重复规则
      * @param previousDate Long 提前previous Date时间提醒,单位分钟
      */
+    @JvmStatic
     fun addCalendarEvent(
         context: Context,
         title: String,
