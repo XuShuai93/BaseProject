@@ -16,7 +16,6 @@ class ActivityStackManager {
     companion object {
         private var mInit = false
 
-        @JvmStatic
         private val mActivityStack = Stack<Activity>()
 
         private val mActivityLifecycleCallbacks = object : Application.ActivityLifecycleCallbacks {
@@ -127,6 +126,7 @@ class ActivityStackManager {
             finishActivity(getActivity(cls))
         }
 
+        @JvmStatic
         fun finishAllActivity() {
             if (isNotEmpty()) {
                 for (activity in mActivityStack) {
