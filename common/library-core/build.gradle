@@ -20,8 +20,6 @@ dependencies {
     api rootProject.ext.androidx["androidx.lifecycle-livedata-ktx"]
     api rootProject.ext.androidx["androidx.lifecycle-process"]
 
-    api rootProject.ext.androidx["androidx.room"]
-
     api rootProject.ext.dependencie["kotlin-coroutines"]
     api rootProject.ext.dependencie["kotlin-coroutines-android"]
 
@@ -33,7 +31,4 @@ dependencies {
     api rootProject.ext.dependencie["retrofit-adapter-rxjava2"]
 
     api rootProject.ext.dependencie["logger"]
-
-    api rootProject.ext.dependencie["glide"]
-    api rootProject.ext.dependencie["arouter-api"]
 }

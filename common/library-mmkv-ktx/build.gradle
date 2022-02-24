@@ -1,0 +1,6 @@
+apply from: rootProject.file("gradle/library.gradle")
+apply plugin: 'kotlin-android'
+
+dependencies {
+    implementation 'com.tencent:mmkv:1.2.12'
+}
