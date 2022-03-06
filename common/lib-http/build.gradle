@@ -1,0 +1,20 @@
+apply from: rootProject.file("gradle/library.gradle")
+
+dependencies {
+
+    implementation rootProject.ext.androidx["androidx.core-ktx"]
+    implementation rootProject.ext.androidx["androidx.lifecycle-runtime"]
+    implementation rootProject.ext.androidx["androidx.lifecycle-runtime-ktx"]
+    implementation rootProject.ext.androidx["androidx.lifecycle-viewmodel-ktx"]
+    implementation rootProject.ext.androidx["androidx.lifecycle-livedata-ktx"]
+
+    implementation rootProject.ext.dependencie["kotlin-coroutines"]
+    implementation rootProject.ext.dependencie["kotlin-coroutines-android"]
+
+    //网络请求
+    api rootProject.ext.dependencie["okhttp"]
+    api rootProject.ext.dependencie["okhttp-logging-interceptor"]
+    api rootProject.ext.dependencie["retrofit"]
+    api rootProject.ext.dependencie["retrofit-converter-gson"]
+    api rootProject.ext.dependencie["retrofit-adapter-rxjava2"]
+}

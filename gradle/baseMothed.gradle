@@ -11,7 +11,7 @@ def readLocalProperty(String key, String defaultValue) {
 }
 
 static def dateTime() {
-    return new Date().format("yyyyMMdd_HHmmss", TimeZone.getTimeZone("UTC"))
+    return new Date().format("yyyyMMddHHmmss", TimeZone.getTimeZone("UTC"))
 }
 
 static def addRepositories(RepositoryHandler handler) {

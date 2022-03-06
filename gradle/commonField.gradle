@@ -1,0 +1,10 @@
+android {
+    defaultConfig {
+        resValue("string", "AppName", "${rootProject.APPLICATION_ID}")
+        buildConfigField("String", "APPLICATION_ID", "\"${rootProject.APPLICATION_ID}\"")
+        buildConfigField("String", "APP_IDENTIFICATION", "\"${rootProject.APP_IDENTIFICATION}\"")
+        manifestPlaceHolders = [
+                umeng_app_key: "替换的内容"
+        ]
+    }
+}
