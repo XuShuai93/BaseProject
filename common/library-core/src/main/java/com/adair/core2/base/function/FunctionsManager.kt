@@ -27,10 +27,10 @@ object FunctionsManager {
     fun createActivityFunctions(): MutableList<BaseActivityFunction> {
         val functions = mutableListOf<BaseActivityFunction>()
 
-        for (classs in activityFunctionClassList) {
+        for (clazz in activityFunctionClassList) {
             var function: BaseActivityFunction? = null
             try {
-                function = classs.newInstance() as BaseActivityFunction?
+                function = clazz.newInstance() as BaseActivityFunction?
             } catch (e: InstantiationException) {
                 e.printStackTrace()
             } catch (e: IllegalAccessException) {

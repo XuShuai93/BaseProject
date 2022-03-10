@@ -1,0 +1,16 @@
+//ARouter 引入配置,在需要引入ARouter的模块的gradle中使用一下依赖引入:
+// apply from: rootProject.file('gradle/arouter.gradle')
+
+android {
+    defaultConfig {
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+    }
+}
+
+dependencies {
+    kapt rootProject.ext.dependencie["arouter-compiler"]
+}

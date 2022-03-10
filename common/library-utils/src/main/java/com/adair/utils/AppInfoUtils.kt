@@ -1,4 +1,4 @@
-package com.adair.core2.utils
+package com.adair.utils
 
 import android.content.Context
 import android.content.pm.PackageManager
@@ -11,10 +11,9 @@ import android.os.Build
  * @version v1.0
  * @date 2022/2/24 10:47
  */
-class AppInfoUtils {
+class AppInfoUtils private constructor() {
 
     companion object {
-
 
         /**
          * 获取当前App 名称
@@ -74,6 +73,5 @@ class AppInfoUtils {
             }
             return versionCode
         }
-
     }
 }

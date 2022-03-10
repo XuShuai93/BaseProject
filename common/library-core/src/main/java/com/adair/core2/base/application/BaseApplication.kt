@@ -3,8 +3,6 @@ package com.adair.core2.base.application
 import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
-import com.adair.core.crash.CrashHandler
-import com.adair.core2.utils.AppInject
 
 /**
  * 基础Application
@@ -28,8 +26,6 @@ abstract class BaseApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        AppInject.init(this)
-        CrashHandler.getInstance().init(this)
         mHelper.onCreate(this)
     }
 

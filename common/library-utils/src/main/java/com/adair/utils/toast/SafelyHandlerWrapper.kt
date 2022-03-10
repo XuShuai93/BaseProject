@@ -1,4 +1,4 @@
-package com.adair.core2.utils.toast
+package com.adair.utils.toast
 
 import android.os.Handler
 import android.os.Message

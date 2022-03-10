@@ -8,5 +8,5 @@ android {
 }
 
 dependencies {
-    implementation 'com.tencent:mmkv:1.2.12'
+    implementation rootProject.ext.androidx["androidx.annotation"]
 }

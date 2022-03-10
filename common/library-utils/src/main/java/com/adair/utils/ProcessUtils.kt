@@ -1,6 +1,7 @@
-package com.adair.core2.utils
+package com.adair.utils
 
 import android.content.Context
+import android.os.Process
 import java.io.BufferedReader
 import java.io.FileReader
 
@@ -11,7 +12,7 @@ import java.io.FileReader
  * @version v1.0
  * @date 2022/2/24 10:32
  */
-class ProcessUtils {
+class ProcessUtils private constructor() {
 
     companion object {
 
@@ -50,7 +51,7 @@ class ProcessUtils {
          */
         @JvmStatic
         fun isMainProcess(context: Context): Boolean {
-            val processName = getProcessName(android.os.Process.myPid())
+            val processName = getProcessName(Process.myPid())
             return if (processName == null) {
                 false
             } else {

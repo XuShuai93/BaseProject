@@ -1,4 +1,4 @@
-package com.adair.core2.utils
+package com.adair.utils.calendar
 
 import android.content.ContentUris
 import android.content.ContentValues
@@ -6,6 +6,7 @@ import android.content.Context
 import android.graphics.Color
 import android.provider.CalendarContract
 import android.util.Log
+import java.lang.IllegalStateException
 import java.util.*
 
 /**
@@ -21,26 +22,50 @@ import java.util.*
  * @date 2021/10/18 16:42
  */
 
-object CalendarUtils {
+class CalendarUtils {
+    companion object {
+        private val TAG = CalendarUtils::class.java.simpleName
 
-    private val TAG = CalendarUtils::class.java.simpleName
+        private val CALENDAR_URL = CalendarContract.Calendars.CONTENT_URI
+        private val CALENDAR_EVENT_URL = CalendarContract.Events.CONTENT_URI
+        private val CALENDAR_REMINDER_URL = CalendarContract.Reminders.CONTENT_URI
 
-    private val CALENDAR_URL = CalendarContract.Calendars.CONTENT_URI
-    private val CALENDAR_EVENT_URL = CalendarContract.Events.CONTENT_URI
-    private val CALENDAR_REMINDER_URL = CalendarContract.Reminders.CONTENT_URI
+        private const val CALENDARS_NAME = "jdd"
+        private const val CALENDARS_ACCOUNT_NAME = "jdd@jdd.com"
+        private const val CALENDARS_ACCOUNT_TYPE = "com.android.jdd"
+        private const val CALENDARS_DISPLAY_NAME = "jdd账户"
+    }
 
-    private const val CALENDARS_NAME = "jdd"
-    private const val CALENDARS_ACCOUNT_NAME = "jdd@jdd.com"
-    private const val CALENDARS_ACCOUNT_TYPE = "com.android.jdd"
-    private const val CALENDARS_DISPLAY_NAME = "jdd账户"
+    private var mInit = false
+    private var mCalendarName: String = CALENDARS_NAME
+    private var mCalendarAccountName: String = CALENDARS_ACCOUNT_NAME
+    private var mCalendarAccountType: String = CALENDARS_ACCOUNT_TYPE
+    private var mCalendarDisplayName: String = CALENDARS_DISPLAY_NAME
+
+
+    fun init(
+        calendarName: String,
+        calendarAccountName: String,
+        calendarAccountType: String,
+        calendarDisplayName: String
+    ) {
+        mCalendarName = calendarName
+        mCalendarAccountName = calendarAccountName
+        mCalendarAccountType = calendarAccountType
+        mCalendarDisplayName = calendarDisplayName
+        mInit = true
+    }
 
 
     //region 日历账户相关方法
     /**
      * 检查是否存在现有日历账户，存在则返回账户id，否则返回-1
      */
-    @JvmStatic
     fun checkCalendarAccount(context: Context): Long {
+        if (!mInit) {
+            throw IllegalStateException("please call init() method")
+        }
+
         var result = -1L
         val userCourse = context.contentResolver.query(CALENDAR_URL, null, null, null, null)
         try {
@@ -66,33 +91,36 @@ object CalendarUtils {
     /***
      * 添加一个日志账号，成功返回账号id，错误返回-1
      */
-    @JvmStatic
     fun addCalendarAccount(context: Context): Long {
+        if (!mInit) {
+            throw IllegalStateException("please call init() method")
+        }
+
         val timeZone = TimeZone.getDefault()
         val contentValues = ContentValues().apply {
-            put(CalendarContract.Calendars.NAME, CALENDARS_NAME)
-            put(CalendarContract.Calendars.ACCOUNT_NAME, CALENDARS_ACCOUNT_NAME)
-            put(CalendarContract.Calendars.ACCOUNT_TYPE, CALENDARS_ACCOUNT_TYPE)
-            put(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME, CALENDARS_DISPLAY_NAME)
+            put(CalendarContract.Calendars.NAME, mCalendarName)
+            put(CalendarContract.Calendars.ACCOUNT_NAME, mCalendarAccountName)
+            put(CalendarContract.Calendars.ACCOUNT_TYPE, mCalendarAccountType)
+            put(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME, mCalendarDisplayName)
             put(CalendarContract.Calendars.VISIBLE, 1)
             put(CalendarContract.Calendars.CALENDAR_COLOR, Color.BLUE)
             put(CalendarContract.Calendars.CALENDAR_ACCESS_LEVEL, CalendarContract.Calendars.CAL_ACCESS_OWNER)
             put(CalendarContract.Calendars.SYNC_EVENTS, 1)
             put(CalendarContract.Calendars.CALENDAR_TIME_ZONE, timeZone.id)
-            put(CalendarContract.Calendars.OWNER_ACCOUNT, CALENDARS_ACCOUNT_NAME)
+            put(CalendarContract.Calendars.OWNER_ACCOUNT, mCalendarAccountName)
             put(CalendarContract.Calendars.CAN_ORGANIZER_RESPOND, 0)
         }
 
         val calendarUri = CALENDAR_URL.buildUpon()
             .appendQueryParameter(CalendarContract.CALLER_IS_SYNCADAPTER, "true")
-            .appendQueryParameter(CalendarContract.Calendars.ACCOUNT_NAME, CALENDARS_ACCOUNT_NAME)
-            .appendQueryParameter(CalendarContract.Calendars.ACCOUNT_TYPE, CALENDARS_ACCOUNT_TYPE)
+            .appendQueryParameter(CalendarContract.Calendars.ACCOUNT_NAME, mCalendarAccountName)
+            .appendQueryParameter(CalendarContract.Calendars.ACCOUNT_TYPE, mCalendarAccountType)
             .build()
         val result = context.contentResolver.insert(calendarUri, contentValues)
         val id = result?.let {
             ContentUris.parseId(it)
         } ?: run {
-            Log.i(TAG, "添加日历账户${CALENDARS_ACCOUNT_NAME}失败")
+            Log.i(TAG, "添加日历账户${mCalendarAccountName}失败")
             -1
         }
         return id
@@ -101,8 +129,11 @@ object CalendarUtils {
     /**
      * 检查是否已经添加了日历账户，如果没有添加先添加一个日历账户再查询
      */
-    @JvmStatic
     fun checkAndAddCalendarAccount(context: Context): Long {
+        if (!mInit) {
+            throw IllegalStateException("please call init() method")
+        }
+
         val oldId = checkCalendarAccount(context)
         if (oldId > 0) {
             return oldId
@@ -128,7 +159,6 @@ object CalendarUtils {
      * @param rrule String 重复规则
      * @param previousDate Long 提前previous Date时间提醒,单位分钟
      */
-    @JvmStatic
     fun addCalendarEvent(
         context: Context,
         title: String,
@@ -138,6 +168,11 @@ object CalendarUtils {
         rule: String? = null,
         vararg previousDate: Long
     ) {
+
+        if (!mInit) {
+            throw IllegalStateException("please call init() method")
+        }
+
         val calId = checkAndAddCalendarAccount(context)
         if (calId <= 0) {
             return
@@ -196,6 +231,10 @@ object CalendarUtils {
      * @param title String 日程标题
      */
     fun deleteCalendarEvent(context: Context, title: String) {
+        if (!mInit) {
+            throw IllegalStateException("please call init() method")
+        }
+
         val course = context.contentResolver.query(CALENDAR_EVENT_URL, null, null, null, null)
         course?.use { courseUse ->
             val count = courseUse.count

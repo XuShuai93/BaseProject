@@ -1,4 +1,4 @@
-package com.adair.core2.utils
+package com.adair.utils
 
 import android.content.Context
 import android.content.pm.PackageManager
@@ -10,7 +10,7 @@ import android.content.pm.PackageManager
  * @version v1.0
  * @date 2022/2/24 10:21
  */
-class MetaDataUtils {
+class MetaDataUtils private constructor() {
 
     companion object {
 

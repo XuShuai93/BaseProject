@@ -1,5 +1,6 @@
-package com.adair.core2.utils
+package com.adair.utils
 
+import android.content.Context
 import android.provider.Settings
 
 /**
@@ -9,7 +10,7 @@ import android.provider.Settings
  * @version v1.0
  * @date 2022/2/24 10:55
  */
-class SystemUtils {
+class SystemUtils private constructor() {
 
     companion object {
         /**
@@ -25,11 +26,11 @@ class SystemUtils {
          *
          * @return ANDROID_ID
          */
-        public fun getAndroidId(): String {
+        @JvmStatic
+        fun getAndroidId(context: Context): String {
             var value = ""
             try {
-                val application = AppInject.getApp()
-                value = Settings.System.getString(application.contentResolver, Settings.Secure.ANDROID_ID)
+                value = Settings.System.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
             } catch (e: Exception) {
                 e.printStackTrace()
             }

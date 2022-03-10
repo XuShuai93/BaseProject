@@ -1,4 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply plugin: 'com.alibaba.arouter'
 buildscript {
     apply from: rootProject.file('gradle/baseMothed.gradle')
     apply from: rootProject.file('gradle/network.gradle')
@@ -9,8 +10,11 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.3"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
+        classpath "com.alibaba:arouter-register:1.0.2"
     }
 }
+
+
 
 allprojects {
     addRepositories(repositories)

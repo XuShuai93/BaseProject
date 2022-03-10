@@ -1,4 +1,4 @@
-package com.adair.core2.crash
+package com.adair.utils.crash
 
 import android.app.Application
 import android.content.Context
@@ -6,7 +6,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Environment
 import android.os.Process
-import com.orhanobut.logger.Logger
+import android.util.Log
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
@@ -30,6 +30,8 @@ object CrashHandler : Thread.UncaughtExceptionHandler {
     /**默认的保存日志文件文件夹名称*/
     private const val DEFAULT_PARENT_DIR_NAME = "CrashHandler"
 
+    private const val TAG = "CrashHandler"
+
     /** 文件路径分隔符,"/"和"\"，屏蔽系统差异 */
     private val FILE_SEP: String = File.separator
 
@@ -39,7 +41,7 @@ object CrashHandler : Thread.UncaughtExceptionHandler {
     }
 
     /**默认的Crash处理方式*/
-    private var mDefaultUncaughExceptionHandler: Thread.UncaughtExceptionHandler? = null
+    private var mDefaultUncaughtExceptionHandler: Thread.UncaughtExceptionHandler? = null
 
     /**Crash日志文件头信息，包含发生Crash设备的基本信息*/
     private var mCrashHead: String = ""
@@ -59,7 +61,7 @@ object CrashHandler : Thread.UncaughtExceptionHandler {
     @JvmStatic
     fun init(application: Application, crashSaveDir: String = "") {
         mContext = WeakReference(application)
-        mDefaultUncaughExceptionHandler = Thread.getDefaultUncaughtExceptionHandler()
+        mDefaultUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler()
         mCrashHead = createLogHead(application)
 
         mDirPath = if (crashSaveDir.isBlank()) {
@@ -111,11 +113,11 @@ object CrashHandler : Thread.UncaughtExceptionHandler {
                 }
             } catch (e1: IOException) {
                 e1.printStackTrace()
-                Logger.e(e1, "save crash info is error!!")
+                Log.e(TAG, "save crash info is error!!", e1)
             }
         }
-        Logger.e(e, "App Crash \n $mCrashHead".trimIndent())
-        mDefaultUncaughExceptionHandler?.uncaughtException(t, e) ?: kotlin.run {
+        Log.e(TAG, "App Crash \n $mCrashHead".trimIndent())
+        mDefaultUncaughtExceptionHandler?.uncaughtException(t, e) ?: kotlin.run {
             Process.killProcess(Process.myPid())
             exitProcess(0)
         }

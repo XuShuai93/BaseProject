@@ -1,4 +1,4 @@
-package com.adair.core2.utils
+package com.adair.utils
 
 import android.app.Application
 import java.lang.IllegalArgumentException

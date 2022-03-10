@@ -1,0 +1,11 @@
+//ARouter 自动注入配置,在项目的build.gradle中引入：
+// apply from: rootProject.file('gradle/arouterProject.gradle')
+
+apply plugin: 'com.alibaba.arouter'
+
+buildscript {
+    addRepositories(repositories)
+    dependencies {
+        classpath "com.alibaba:arouter-register:1.0.2"
+    }
+}

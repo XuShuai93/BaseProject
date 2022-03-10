@@ -4,17 +4,39 @@ if (rootProject.ext.isBuildModule) {
 } else {
     apply plugin: 'com.android.library'
 }
-apply from: rootProject.file('gradle/common.gradle')
+apply plugin: "kotlin-android"
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
+
 apply from: rootProject.file('gradle/field.gradle')
 
+
 android {
+    compileSdkVersion rootProject.ext.android_version.compileSdkVersion
+    buildToolsVersion rootProject.ext.android_version.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android_version.minSdkVersion
+        targetSdkVersion rootProject.ext.android_version.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro", "proguard-rules.pro"
+
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
     sourceSets {
         main {
             if (rootProject.ext.isBuildModule) {
                 //在main文件夹下建立alone文件夹，下面可以放java文件，资源文件等测试文件
                 //这里进行设置使用单独运行还是合并运行的Manifest.xml
-                //在main文件夹下建立debug文件夹，下面可以放java文件，资源文件等测试文件
-                //这里进行设置使用单独运行还是合并运行的Manifest.xml,
                 if (file('src/main/alone/AndroidManifest.xml').exists()) {
                     manifest.srcFile 'src/main/alone/AndroidManifest.xml'
                 } else {
@@ -30,8 +52,32 @@ android {
             }
         }
     }
+
+
+    buildFeatures {
+        //开启dataBinding
+        dataBinding true
+        //开启viewBinding
+        viewBinding true
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.android_version.java_version
+        targetCompatibility rootProject.ext.android_version.java_version
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
-
+    testImplementation rootProject.ext.androidx["junit"]
+    androidTestImplementation rootProject.ext.androidx["androidx.test.ext-junit"]
+    androidTestImplementation rootProject.ext.androidx["androidx.test.espresso:espresso-core"]
 }
