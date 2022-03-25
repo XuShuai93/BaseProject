@@ -68,21 +68,37 @@ object ActivityStackManager {
         }
     }
 
+    /**
+     * 获取栈中Activity数量
+     * @return Int 当前栈中Activity数量
+     */
     @JvmStatic
     fun getSize(): Int {
         return mActivityStack.size
     }
 
+    /**
+     * 返回当前栈是否是null的
+     * @return Boolean true 当前栈的activity的数量为0,false 数量>0
+     */
     @JvmStatic
     fun isEmpty(): Boolean {
         return mActivityStack.isEmpty()
     }
 
+    /**
+     * 返回当前栈是否不为空
+     * @return Boolean true 当前栈不为空，false 当前栈为空
+     */
     @JvmStatic
     fun isNotEmpty(): Boolean {
         return mActivityStack.isNotEmpty()
     }
 
+    /**
+     * 获取当前栈顶层activity,即当前显示的activity
+     * @return Activity? 顶层activity
+     */
     @JvmStatic
     fun topActivity(): Activity? {
         if (isNotEmpty()) {
@@ -91,6 +107,11 @@ object ActivityStackManager {
         return null
     }
 
+    /**
+     * 当前栈中查找指定class的activity
+     * @param cls Class<*> 指定的class对象
+     * @return Activity? 找到的activity对象
+     */
     @JvmStatic
     fun getActivity(cls: Class<*>): Activity? {
         if (isNotEmpty()) {
@@ -102,6 +123,24 @@ object ActivityStackManager {
         }
         return null
     }
+
+    /**
+     * 根据指定的类名查找栈中是否有activity对象
+     * @param clazzName String 类名字符串，注意：类名包含包名
+     * @return Activity? 找到的activity对象
+     */
+    @JvmStatic
+    fun getActivity(clazzName: String): Activity? {
+        if (isNotEmpty()) {
+            for (activity in mActivityStack) {
+                if (activity.javaClass.name == clazzName) {
+                    return activity
+                }
+            }
+        }
+        return null
+    }
+
 
     /**
      * 关闭指定界面
@@ -128,6 +167,14 @@ object ActivityStackManager {
     @JvmStatic
     fun finishActivity(cls: Class<*>) {
         finishActivity(getActivity(cls))
+    }
+
+    /**
+     * 结束指定类名的activity
+     * @param clazzName String 指定的activity类名，包含类的包名
+     */
+    fun finishActivity(clazzName: String) {
+        finishActivity(getActivity(clazzName))
     }
 
     /**
