@@ -19,16 +19,35 @@ import androidx.fragment.app.Fragment
  */
 abstract class BaseFragment : Fragment() {
 
+    private var mLazyLoad = false
+
+    /**
+     * 当前Fragment是否对用户可见
+     */
+    private var mIsVisibleToUser = false
+
+    /**
+     * 是否调用了setUserVisibleHint方法。处理show+add+hide模式下，默认可见 Fragment 不调用
+     * onHiddenChanged 方法，进而不执行懒加载方法的问题。
+     */
+    private var mIsCallUserVisibleHint = false
+
+    /**
+     * 当使用ViewPager+Fragment形式会调用该方法时，setUserVisibleHint会优先Fragment生命周期函数调用，
+     * 所以这个时候就,会导致在setUserVisibleHint方法执行时就执行了懒加载，
+     * 而不是在onResume方法实际调用的时候执行懒加载。所以需要这个变量
+     */
+    private var mIsCallResume = false
+
+    /**
+     * 是否初始化View
+     */
     private var mInitView: Boolean = false
-    private var mLazy = false
 
+    /**
+     * 当前是否在OnResume生命周期范围
+     */
     private var mResume: Boolean = false
-
-    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        super.setUserVisibleHint(isVisibleToUser)
-        lazy()
-    }
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (getContentLayoutId() != 0) {
@@ -43,10 +62,26 @@ abstract class BaseFragment : Fragment() {
         mInitView = true
     }
 
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        mIsVisibleToUser = isVisibleToUser
+        lazyLoad()
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        mIsVisibleToUser = !hidden
+        lazyLoad()
+    }
+
     override fun onResume() {
         super.onResume()
         mResume = true
-        lazy()
+        mIsCallResume = true
+        if (!mIsCallUserVisibleHint) {
+            mIsVisibleToUser = !isHidden
+        }
+        lazyLoad()
     }
 
     override fun onPause() {
@@ -54,9 +89,17 @@ abstract class BaseFragment : Fragment() {
         mResume = false
     }
 
-    private fun lazy() {
-        if (userVisibleHint && mInitView && !mLazy) {
-            mLazy = true
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mInitView = false
+        mIsVisibleToUser = false
+        mIsCallResume = false
+        mIsCallUserVisibleHint = false
+    }
+
+    private fun lazyLoad() {
+        if (mIsVisibleToUser && mInitView && !mLazyLoad && mIsCallResume) {
+            mLazyLoad = true
             onFirstVisible()
         }
     }
@@ -79,7 +122,6 @@ abstract class BaseFragment : Fragment() {
     fun isResume(): Boolean {
         return mResume
     }
-
 
     /** 隐藏键盘 */
     protected fun hideKeyboardFrom(context: Context, view: View) {

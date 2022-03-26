@@ -173,6 +173,7 @@ object ActivityStackManager {
      * 结束指定类名的activity
      * @param clazzName String 指定的activity类名，包含类的包名
      */
+    @JvmStatic
     fun finishActivity(clazzName: String) {
         finishActivity(getActivity(clazzName))
     }

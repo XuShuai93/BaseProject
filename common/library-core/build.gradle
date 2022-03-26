@@ -1,5 +1,13 @@
 apply from: rootProject.file("gradle/library.gradle")
-apply plugin: 'kotlin-android'
+
+android {
+    buildFeatures {
+        //开启dataBinding
+        dataBinding true
+        //开启viewBinding
+        viewBinding true
+    }
+}
 
 dependencies {
     api rootProject.ext.androidx["androidx.core"]

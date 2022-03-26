@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BaseDialogStyle" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <!--阴影  -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--透明背景-->
+        <item name="android:background">@android:color/transparent</item>
+        <!--窗口背景透明-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--弹窗背景是否变暗-->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!--去除window的padding，当windowIsFloating 为true时,会有padding-->
+        <item name="android:padding">0dp</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="BaseDialogStyle.FullScreen">
+        <!--弹窗背景是否变暗-->
+        <item name="android:windowFullscreen">true</item>
+    </style>
+</resources>

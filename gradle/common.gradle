@@ -15,25 +15,25 @@ android {
 
         multiDexEnabled true
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments += [
-                        //Room
-                        //配置并启用将数据库架构导出到给定目录中的 JSON 文件的功能
-                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
-                        //启用 Gradle 增量注解处理器。
-                        "room.incremental"     : "true",
-                        //配置 Room 以重写查询，使其顶部星形投影在展开后仅包含 DAO 方法返回类型中定义的列。
-                        "room.expandProjection": "true",
-                ]
-            }
-        }
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments += [
+//                        //Room
+//                        //配置并启用将数据库架构导出到给定目录中的 JSON 文件的功能
+//                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
+//                        //启用 Gradle 增量注解处理器。
+//                        "room.incremental"     : "true",
+//                        //配置 Room 以重写查询，使其顶部星形投影在展开后仅包含 DAO 方法返回类型中定义的列。
+//                        "room.expandProjection": "true",
+//                ]
+//            }
+//        }
 
-        kapt {
-            arguments {
-                arg("AROUTER_MODULE_NAME", project.getName())
-            }
-        }
+//        kapt {
+//            arguments {
+//                arg("AROUTER_MODULE_NAME", project.getName())
+//            }
+//        }
 
         ndk {
             // 添加项目所需CPU类型的最小集
@@ -41,33 +41,21 @@ android {
         }
     }
 
-    signingConfigs {
-        release {
-            keyAlias 'fairyorchard'
-            keyPassword 'cdyf1214'
-            storeFile rootProject.file('keystore/fairyorchard.jks')
-            storePassword 'cdyf1214'
-            v1SigningEnabled true
-            v2SigningEnabled true
-        }
-    }
 
     buildTypes {
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
         }
     }
 
     buildFeatures {
         //开启dataBinding
-        dataBinding  true
+        dataBinding true
         //开启viewBinding
         viewBinding true
     }
@@ -93,7 +81,7 @@ dependencies {
     androidTestImplementation rootProject.ext.androidx["androidx.test.espresso:espresso-core"]
 
     kapt rootProject.ext.androidx["androidx.lifecycle-common-java8"]
-    kapt rootProject.ext.androidx["androidx.room-compiler"]
-    kapt rootProject.ext.dependencie["arouter-compiler"]
-    kapt rootProject.ext.dependencie["glide-compiler"]
+//    kapt rootProject.ext.androidx["androidx.room-compiler"]
+//    kapt rootProject.ext.dependencie["arouter-compiler"]
+//    kapt rootProject.ext.dependencie["glide-compiler"]
 }

@@ -11,7 +11,6 @@ import android.view.WindowManager
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import com.adair.core.utils.StatusBarUtils
-import com.adair.core2.base.application.ComponentApplicationHelper
 
 
 /**
