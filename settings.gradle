@@ -1,4 +1,5 @@
 rootProject.name = "BaseProject"
+enableFeaturePreview('VERSION_CATALOGS')
 include ':app'
 include ':common:library-core'
 include ':common:library-mmkv-ktx'

@@ -1,0 +1,11 @@
+#用于声明可以被依赖项引用的版本
+[versions]
+
+#用于声明Library的别名
+[libraries]
+
+#用于声明依赖包(用于多个依赖一起使用的情况)
+[bundles]
+
+#用于声明插件
+#[plugins]
