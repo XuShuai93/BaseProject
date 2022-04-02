@@ -44,10 +44,10 @@ class NetworkUtils private constructor() {
          * 不可用wifi:2
          */
         @JvmStatic
-        fun ping(ip: String): Boolean {
+        fun ping(ip: String?): Boolean {
             var useIp = ip
             val runtime = Runtime.getRuntime()
-            if (useIp.isBlank()) {
+            if (useIp.isNullOrBlank()) {
                 useIp = "www.baidu.com"
             }
             try {

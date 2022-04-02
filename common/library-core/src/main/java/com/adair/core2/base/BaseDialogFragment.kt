@@ -8,8 +8,11 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.annotation.StyleRes
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.adair.core.R
 import com.adair.core.utils.StatusBarUtils
+import java.lang.reflect.Field
 
 /**
  * 基础dialogFragment 封装
@@ -189,4 +192,25 @@ abstract class BaseDialogFragment : DialogFragment() {
 
     /** 初始化View */
     abstract fun initView(view: View, savedInstanceState: Bundle?)
+
+    /**
+     * 使用此方法显示弹出框，可以避免生命周期状态错误导致的异常(Can not perform this action after onSaveInstanceState)
+     * @param manager FragmentManager
+     * @param tag String?
+     */
+    fun showAllowingStateLoss(manager: FragmentManager, tag: String?) {
+        try {
+            val dismissed: Field = DialogFragment::class.java.getDeclaredField("mDismissed")
+            dismissed.isAccessible = true
+            dismissed.set(this, false)
+            val shown: Field = DialogFragment::class.java.getDeclaredField("mShownByMe")
+            shown.isAccessible = true
+            shown.set(this, true)
+            val ft: FragmentTransaction = manager.beginTransaction()
+            ft.add(this, tag)
+            ft.commitAllowingStateLoss()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 }

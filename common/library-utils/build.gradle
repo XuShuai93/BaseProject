@@ -2,11 +2,13 @@ apply from: rootProject.file("gradle/library.gradle")
 
 android {
     defaultConfig {
+        minSdkVersion 14
         versionCode 1
         versionName "1.0"
     }
 }
 
 dependencies {
+    implementation rootProject.ext.androidx["androidx.core"]
     implementation rootProject.ext.androidx["androidx.annotation"]
 }
