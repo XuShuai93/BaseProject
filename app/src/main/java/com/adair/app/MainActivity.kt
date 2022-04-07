@@ -4,37 +4,45 @@ import android.graphics.Color
 import android.os.Bundle
 import com.adair.app.databinding.ActivityMainBinding
 import com.adair.core2.base.viewbinding.ui.BaseViewBindingActivity
-import com.adair.utils.density.dp2Px
+import com.adair.utils.ui.StatusBarUtils
 import com.adair.utils.ui.SystemUiUtils
 
 class MainActivity : BaseViewBindingActivity<ActivityMainBinding>() {
     override fun initView(savedInstanceState: Bundle?) {
 
-        mBinding.btnDialog1.setOnClickListener {
-            showDialog()
+        mBinding.btnShowStatusBar.setOnClickListener {
+            StatusBarUtils.showStatusBar(window)
+            mBinding.root.requestLayout()
         }
 
         mBinding.btn1.setOnClickListener {
-            SystemUiUtils.showStatusBar(window)
+            StatusBarUtils.hideStatusBar(window)
+            mBinding.root.requestLayout()
         }
         mBinding.btn2.setOnClickListener {
-            SystemUiUtils.hideStatusBar(window)
+            StatusBarUtils.setImmersionStatusBar(window)
+            mBinding.root.requestLayout()
         }
         mBinding.btn3.setOnClickListener {
-            SystemUiUtils.setTransparentStatusBar(window)
+            StatusBarUtils.setFirSystemWindows(window, true)
+            mBinding.root.requestLayout()
         }
         mBinding.btn4.setOnClickListener {
             SystemUiUtils.setStatusBarLightFont(this, true)
+            mBinding.root.requestLayout()
         }
         mBinding.btn5.setOnClickListener {
             SystemUiUtils.setStatusBarLightFont(this, false)
+            mBinding.root.requestLayout()
         }
 
         mBinding.btn6.setOnClickListener {
-            SystemUiUtils.setStatusBarColor(window, Color.RED)
+            StatusBarUtils.setStatusBarColor(window, Color.RED)
+            mBinding.root.requestLayout()
         }
         mBinding.btn7.setOnClickListener {
-            SystemUiUtils.restoreStatusBar(window)
+            StatusBarUtils.setFirSystemWindows(window, true)
+            mBinding.root.requestLayout()
         }
     }
 
@@ -52,7 +60,7 @@ class MainActivity : BaseViewBindingActivity<ActivityMainBinding>() {
     }
 
     override fun isHideStatusBar(): Boolean {
-        return true
+        return false
     }
 
     override fun isHideNavigationBar(): Boolean {

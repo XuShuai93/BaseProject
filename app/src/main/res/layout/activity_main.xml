@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFF00"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btn_dialog_1"
+        android:id="@+id/btn_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="展示弹窗" />
+        android:text="隐藏状态栏" />
 
     <Button
-        android:id="@+id/btn_1"
+        android:id="@+id/btn_show_status_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="显示状态栏" />
@@ -23,13 +24,13 @@
         android:id="@+id/btn_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="隐藏状态栏" />
+        android:text="沉浸式状态栏" />
 
     <Button
         android:id="@+id/btn_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="透明状态栏" />
+        android:text="设置是否覆盖内容" />
 
     <Button
         android:id="@+id/btn_4"
