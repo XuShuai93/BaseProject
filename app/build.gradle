@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply from: rootProject.file('gradle/common.gradle')
-apply plugin: 'kotlin-android'
 
 
 def var = rootProject.ext.DEBUG ? "offline" : "online"

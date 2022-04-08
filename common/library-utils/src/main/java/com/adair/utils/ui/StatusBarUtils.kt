@@ -1,12 +1,15 @@
 package com.adair.utils.ui
 
 import android.annotation.TargetApi
+import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.os.Build
 import android.view.*
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.annotation.ColorInt
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -78,6 +81,50 @@ class StatusBarUtils {
             }
         }
 
+
+        /**
+         * 判断状态栏是否显示
+         *
+         * @param window Window?
+         * @return Boolean
+         */
+        @JvmStatic
+        fun isShowStatusBar(window: Window?): Boolean {
+            return window?.let {
+
+                val content = it.findViewById<ViewGroup>(android.R.id.content)
+
+                val contentView: ViewGroup = content.parent.parent as ViewGroup
+                val contentViewTop = contentView.y != 0f
+                if (contentViewTop) {
+                    return true
+                }
+
+                val params = it.attributes
+                val flag = params.flags and WindowManager.LayoutParams.FLAG_FULLSCREEN.inv()
+                val flagShow = flag != params.flags
+                if (flagShow) {
+                    return true
+                }
+
+                val options = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+
+                val newOptions = it.decorView.systemUiVisibility and options.inv()
+                if (newOptions != it.decorView.systemUiVisibility) {
+                    return true
+                }
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    val insetsCompat = ViewCompat.getRootWindowInsets(content)
+                    return insetsCompat?.isVisible(WindowInsetsCompat.Type.statusBars()) ?: false
+                }
+                return false
+            } ?: false
+        }
+
+
         /**
          * 设置沉浸式状态栏 ，状态栏覆盖在内容上面
          * @param window Window?
@@ -111,7 +158,6 @@ class StatusBarUtils {
                             decorView.systemUiVisibility = decorView.systemUiVisibility and options.inv()
                         }
                         decorView.requestApplyInsets()
-                        setFitSystemWindows(fitsSystemWindows)
                     }
                     else -> {
                         addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
@@ -162,7 +208,11 @@ class StatusBarUtils {
             }
         }
 
-
+        /**
+         * 给Content 设置状态栏高度的padding
+         * @param window Window?
+         * @param fitsSystemWindows Boolean
+         */
         fun setFirSystemWindows(window: Window?, fitsSystemWindows: Boolean) {
             window?.setFitSystemWindows(fitsSystemWindows)
         }
@@ -181,5 +231,58 @@ class StatusBarUtils {
                 contentView.setPadding(0, 0, 0, 0)
             }
         }
+
+
+        /**
+         * @param activity  目标activity
+         * @param lightFont font is black when true or is white when false
+         */
+        @JvmStatic
+        fun setStatusBarLightFont(window: Window?, lightFont: Boolean) {
+            window?.apply {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    insetsController?.let {
+                        val controllerCompat = WindowInsetsControllerCompat.toWindowInsetsControllerCompat(it)
+                        controllerCompat.isAppearanceLightStatusBars = lightFont
+                    }
+                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    val options = if (lightFont) {
+                        decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                    } else {
+                        decorView.systemUiVisibility and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv()
+                    }
+                    decorView.systemUiVisibility = options
+                }
+            }
+        }
+
+        /**
+         * Is light status bar
+         *
+         * @param activity 上下文对象
+         * @return true 文字颜色为黑色,false 文字颜色白色
+         */
+        @JvmStatic
+        fun isStatusBarLightFont(window: Window?): Boolean {
+            return window?.let {
+                // 设置浅色状态栏时的界面显示
+                return when {
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.R -> {
+                        it.insetsController?.let { controller ->
+                            val controllerCompat =
+                                WindowInsetsControllerCompat.toWindowInsetsControllerCompat(controller)
+                            controllerCompat.isAppearanceLightStatusBars
+                        } ?: false
+                    }
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.M -> {
+                        it.decorView.systemUiVisibility and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR == View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                    }
+                    else -> {
+                        false
+                    }
+                }
+            } ?: false
+        }
+
     }
 }

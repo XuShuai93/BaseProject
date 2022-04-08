@@ -14,16 +14,6 @@ android {
         consumerProguardFiles "consumer-rules.pro", "proguard-rules.pro"
 
         multiDexEnabled true
-
-
-        android.applicationVariants.all { variant ->
-            variant.outputs.all {
-                def var = rootProject.ext.DEBUG ? "offline" : "online"
-                def identification = rootProject.ext.APP_IDENTIFICATION
-                outputFileName = "app_${identification}_${var}_${variant.buildType.name}_${variant.versionName}_${variant.versionCode}_${dateTime}.apk"
-            }
-        }
-
     }
 
 

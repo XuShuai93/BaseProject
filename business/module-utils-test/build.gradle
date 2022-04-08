@@ -1,0 +1,17 @@
+apply plugin: 'com.android.application'
+apply from: rootProject.file('gradle/common.gradle')
+
+
+android {
+
+    defaultConfig {
+        applicationId "com.adair.utilstest"
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+dependencies {
+    implementation project(path: ':common:library-core')
+    implementation project(path: ':common:library-utils')
+}
