@@ -39,4 +39,6 @@ dependencies {
     api rootProject.ext.dependencie["retrofit-adapter-rxjava2"]
 
     api rootProject.ext.dependencie["logger"]
+
+    implementation 'com.geyifeng.immersionbar:immersionbar:3.2.2'
 }

@@ -1,14 +1,10 @@
 package com.adair.utils.ui
 
-import android.R
+import android.annotation.TargetApi
 import android.content.Context
 import android.graphics.Color
 import android.os.Build
-import android.view.View
-import android.view.ViewGroup
-import android.view.Window
-import android.view.WindowInsets
-import android.view.WindowManager
+import android.view.*
 import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import androidx.core.view.WindowCompat
@@ -23,6 +19,7 @@ import androidx.core.view.WindowInsetsControllerCompat
  * @version v1.0
  * @date 2022/4/6 16:32
  */
+@TargetApi(Build.VERSION_CODES.KITKAT)
 class StatusBarUtils {
 
     companion object {
@@ -102,19 +99,25 @@ class StatusBarUtils {
                         //设置状态栏颜色
                         statusBarColor = Color.TRANSPARENT
 
-                        if (fitsSystemWindows) {
+
+                        val options = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+
+                        if (!fitsSystemWindows) {
                             //设置window的状态栏不可见,添加此2个flag，状态栏覆盖在界面内容之上
-                            val options = decorView.systemUiVisibility or
-                                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-                                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                            decorView.systemUiVisibility = options
+                            decorView.systemUiVisibility = decorView.systemUiVisibility or options
+                        } else {
+                            decorView.systemUiVisibility = decorView.systemUiVisibility and options.inv()
                         }
+                        decorView.requestApplyInsets()
+                        setFitSystemWindows(fitsSystemWindows)
                     }
                     else -> {
                         addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
                         val statusBarView = decorView.findViewWithTag<StatusBarView>(STATUS_BAR_VIEW_TAG)
                         statusBarView?.setBackgroundColor(Color.TRANSPARENT)
-                        setFitSystemWindows(false)
+                        setFitSystemWindows(fitsSystemWindows)
                     }
                 }
             }
@@ -171,14 +174,12 @@ class StatusBarUtils {
          * @param fitsSystemWindows Boolean
          */
         private fun Window.setFitSystemWindows(fitsSystemWindows: Boolean) {
-            val rootView = findViewById<ViewGroup>(R.id.content).getChildAt(0) as ViewGroup
-            rootView.fitsSystemWindows = fitsSystemWindows
-            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-                rootView.requestApplyInsets()
+            val contentView = findViewById<ViewGroup>(android.R.id.content)
+            if (fitsSystemWindows) {
+                contentView.setPadding(0, getStatusBarHeight(context), 0, 0)
             } else {
-                rootView.requestFitSystemWindows()
+                contentView.setPadding(0, 0, 0, 0)
             }
-            rootView.invalidate()
         }
     }
 }

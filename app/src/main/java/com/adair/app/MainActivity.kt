@@ -12,37 +12,32 @@ class MainActivity : BaseViewBindingActivity<ActivityMainBinding>() {
 
         mBinding.btnShowStatusBar.setOnClickListener {
             StatusBarUtils.showStatusBar(window)
-            mBinding.root.requestLayout()
         }
 
         mBinding.btn1.setOnClickListener {
             StatusBarUtils.hideStatusBar(window)
-            mBinding.root.requestLayout()
         }
         mBinding.btn2.setOnClickListener {
-            StatusBarUtils.setImmersionStatusBar(window)
-            mBinding.root.requestLayout()
+            StatusBarUtils.setImmersionStatusBar(window, false)
         }
-        mBinding.btn3.setOnClickListener {
-            StatusBarUtils.setFirSystemWindows(window, true)
-            mBinding.root.requestLayout()
-        }
+
         mBinding.btn4.setOnClickListener {
             SystemUiUtils.setStatusBarLightFont(this, true)
-            mBinding.root.requestLayout()
         }
         mBinding.btn5.setOnClickListener {
             SystemUiUtils.setStatusBarLightFont(this, false)
-            mBinding.root.requestLayout()
         }
 
         mBinding.btn6.setOnClickListener {
             StatusBarUtils.setStatusBarColor(window, Color.RED)
-            mBinding.root.requestLayout()
         }
+
+        mBinding.btn3.setOnClickListener {
+            StatusBarUtils.setFirSystemWindows(window, false)
+        }
+
         mBinding.btn7.setOnClickListener {
             StatusBarUtils.setFirSystemWindows(window, true)
-            mBinding.root.requestLayout()
         }
     }
 

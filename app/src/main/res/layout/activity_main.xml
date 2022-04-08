@@ -26,11 +26,6 @@
         android:layout_height="wrap_content"
         android:text="沉浸式状态栏" />
 
-    <Button
-        android:id="@+id/btn_3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="设置是否覆盖内容" />
 
     <Button
         android:id="@+id/btn_4"
@@ -51,8 +46,16 @@
         android:text="状态栏颜色" />
 
     <Button
+        android:id="@+id/btn_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="fitSystemWindows = false"
+        android:textAllCaps="false" />
+
+    <Button
         android:id="@+id/btn_7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="不透明状态栏" />
+        android:text="fitSystemWindows = true"
+        android:textAllCaps="false" />
 </LinearLayout>
