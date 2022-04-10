@@ -100,25 +100,16 @@ class StatusBarUtils {
                     return true
                 }
 
-                val params = it.attributes
-                val flag = params.flags and WindowManager.LayoutParams.FLAG_FULLSCREEN.inv()
-                val flagShow = flag != params.flags
-                if (flagShow) {
-                    return true
-                }
-
-                val options = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-
-                val newOptions = it.decorView.systemUiVisibility and options.inv()
-                if (newOptions != it.decorView.systemUiVisibility) {
-                    return true
-                }
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     val insetsCompat = ViewCompat.getRootWindowInsets(content)
                     return insetsCompat?.isVisible(WindowInsetsCompat.Type.statusBars()) ?: false
+                } else {
+                    val params = it.attributes
+                    val flag = params.flags or WindowManager.LayoutParams.FLAG_FULLSCREEN
+                    val flagShow = flag != params.flags
+                    if (flagShow) {
+                        return true
+                    }
                 }
                 return false
             } ?: false
@@ -146,17 +137,16 @@ class StatusBarUtils {
                         //设置状态栏颜色
                         statusBarColor = Color.TRANSPARENT
 
-
                         val options = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
                                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
                                 View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-
                         if (!fitsSystemWindows) {
                             //设置window的状态栏不可见,添加此2个flag，状态栏覆盖在界面内容之上
                             decorView.systemUiVisibility = decorView.systemUiVisibility or options
                         } else {
                             decorView.systemUiVisibility = decorView.systemUiVisibility and options.inv()
                         }
+                        //刷新界面,防止界面不生效
                         decorView.requestApplyInsets()
                     }
                     else -> {
@@ -164,6 +154,11 @@ class StatusBarUtils {
                         val statusBarView = decorView.findViewWithTag<StatusBarView>(STATUS_BAR_VIEW_TAG)
                         statusBarView?.setBackgroundColor(Color.TRANSPARENT)
                         setFitSystemWindows(fitsSystemWindows)
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH) {
+                            decorView.requestApplyInsets()
+                        } else {
+                            decorView.requestFitSystemWindows()
+                        }
                     }
                 }
             }
