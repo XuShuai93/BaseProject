@@ -11,5 +11,8 @@ class MainActivity : BaseViewBindingActivity<ActivityMainBinding>() {
         mBinding.btnStatusBar.setOnClickListener {
             startActivity(Intent(this, StatusBarActivity::class.java))
         }
+        mBinding.btnNavigationBar.setOnClickListener {
+            startActivity(Intent(this, NavigationBarActivity::class.java))
+        }
     }
 }

@@ -16,6 +16,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="状态栏相关操作" />
+
+        <Button
+            android:id="@+id/btn_navigation_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="导航栏相关操作" />
     </LinearLayout>
 
 </ScrollView>

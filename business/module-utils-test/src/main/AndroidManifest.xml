@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BaseProject">
         <activity
+            android:name=".NavigationBarActivity"
+            android:exported="false" />
+        <activity
             android:name=".StatusBarActivity"
             android:exported="false" />
         <activity

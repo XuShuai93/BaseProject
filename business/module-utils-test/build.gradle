@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply from: rootProject.file('gradle/common.gradle')
+apply plugin: 'kotlin-android'
 
 
 android {
@@ -14,4 +15,7 @@ android {
 dependencies {
     implementation project(path: ':common:library-core')
     implementation project(path: ':common:library-utils')
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 }
