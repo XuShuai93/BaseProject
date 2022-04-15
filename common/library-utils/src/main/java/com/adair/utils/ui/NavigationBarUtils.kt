@@ -2,8 +2,14 @@ package com.adair.utils.ui
 
 import android.content.Context
 import android.graphics.Color
+import android.os.Build
+import android.view.View
 import android.view.Window
+import android.view.WindowManager
 import androidx.annotation.ColorInt
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 
 /**
  *
@@ -33,16 +39,39 @@ class NavigationBarUtils {
          * 隐藏导航栏
          */
         @JvmStatic
-        fun hideNavigationBar(window: Window) {
-
+        fun hideNavigationBar(window: Window?) {
+            window?.apply {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    insetsController?.let {
+                        val controllerCompat = WindowInsetsControllerCompat.toWindowInsetsControllerCompat(it)
+                        controllerCompat.hide(WindowInsetsCompat.Type.navigationBars())
+                        controllerCompat.systemBarsBehavior =
+                            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+                    }
+                } else {
+                    val options = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                    decorView.systemUiVisibility = decorView.systemUiVisibility or options
+                }
+            }
         }
 
         /**
          * 显示导航栏
          */
         @JvmStatic
-        fun showNavigationBar(window: Window) {
-
+        fun showNavigationBar(window: Window?) {
+            window?.apply {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    insetsController?.let {
+                        val controllerCompat = WindowInsetsControllerCompat.toWindowInsetsControllerCompat(it)
+                        controllerCompat.show(WindowInsetsCompat.Type.navigationBars())
+                    }
+                } else {
+                    val options = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    decorView.systemUiVisibility = decorView.systemUiVisibility and options.inv()
+                }
+            }
         }
 
         /**
@@ -50,6 +79,7 @@ class NavigationBarUtils {
          */
         @JvmStatic
         fun setImmersionNavigationBar(window: Window) {
+           val controllerCompat =  ViewCompat.getWindowInsetsController(window.decorView)
 
         }
 

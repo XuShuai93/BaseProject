@@ -9,7 +9,7 @@ import android.os.Build
  * @version v1.0
  * @date 2022/4/8 10:59
  */
-class OSUtils {
+class OSUtils private constructor() {
 
     companion object {
 
