@@ -1,4 +1,4 @@
-package com.adair.utils.density
+package com.adair.utils.display
 
 import android.content.res.Resources
 import android.util.TypedValue

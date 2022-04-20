@@ -3,6 +3,10 @@ package com.adair.core2.base.application
 import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
+import com.adair.core.crash.CrashHandler
+import com.adair.core.utils.ApplicationInject
+import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.Logger
 
 /**
  * 基础Application
@@ -11,7 +15,7 @@ import android.content.res.Configuration
  * @version v1.0
  * @date 2021/11/5 9:58
  */
-abstract class BaseApplication : Application() {
+open class BaseApplication : Application() {
 
     private val mComponentAppClassNameList = mutableListOf<String>()
     private val mHelper = ComponentApplicationHelper()
@@ -26,6 +30,9 @@ abstract class BaseApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        ApplicationInject.getInstance().init(this)
+        Logger.addLogAdapter(AndroidLogAdapter())
+        CrashHandler.getInstance().init(this)
         mHelper.onCreate(this)
     }
 
@@ -49,5 +56,7 @@ abstract class BaseApplication : Application() {
         mHelper.onConfigurationChanged(this, newConfig)
     }
 
-    abstract fun addComponentApplication(classNames: MutableList<String>)
+    open fun addComponentApplication(classNames: MutableList<String>) {
+
+    }
 }

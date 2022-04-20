@@ -1,4 +1,4 @@
-package com.adair.utils.density
+package com.adair.utils.display
 
 import android.content.Context
 import android.os.Build
