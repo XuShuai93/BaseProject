@@ -38,7 +38,11 @@ dependencies {
     api rootProject.ext.dependencie["retrofit-converter-gson"]
     api rootProject.ext.dependencie["retrofit-adapter-rxjava2"]
 
+    //日志组件
     api rootProject.ext.dependencie["logger"]
 
-    implementation 'com.geyifeng.immersionbar:immersionbar:3.2.2'
+    //导航栏相关依赖
+    api rootProject.ext.dependencie["immersionbar"]
+    api rootProject.ext.dependencie["immersionbar-components"]
+    api rootProject.ext.dependencie["immersionbar-ktx"]
 }

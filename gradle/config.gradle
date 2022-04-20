@@ -29,7 +29,7 @@ ext {
             kotlin         : "1.5.31",
             kolinCoroutines: "1.5.1",
             rxlifecycle    : "4.0.2",
-            immersionbar   : "3.0.0",
+            immersionbar   : "3.2.2",
     ]
 
     //androidx支持库配置
