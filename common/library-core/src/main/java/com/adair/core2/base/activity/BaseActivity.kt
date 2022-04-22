@@ -1,4 +1,4 @@
-package com.adair.core2.base
+package com.adair.core2.base.activity
 
 import android.content.Intent
 import android.content.pm.ActivityInfo
@@ -11,7 +11,6 @@ import android.view.WindowManager
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import com.adair.core.utils.StatusBarUtils
-import com.gyf.immersionbar.ImmersionBar
 
 
 /**
@@ -86,7 +85,6 @@ abstract class BaseActivity : AppCompatActivity() {
 
     private fun hideNavigationBar() {
         StatusBarUtils.hideNavigationBar(this)
-        ImmersionBar.with(this)
     }
 
     /**执行在super.onCreate(savedInstanceState)之前*/

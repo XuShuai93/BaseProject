@@ -26,7 +26,6 @@ import com.adair.core.utils.StatusBarUtils;
  * @date 2021/4/6
  */
 public abstract class BaseActivity extends AppCompatActivity {
-    private final Handler mMainHandler = new Handler(Looper.getMainLooper());
     private boolean isResume = false;
 
     @Override
@@ -39,15 +38,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         } else if (getContentView() != null) {
             setContentView(getContentView());
         }
-
-        if (isFullScreen()) {
-            fullScreen();
-        }
-
         if (isLandscape()) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
         }
-
         afterSetContentView(savedInstanceState);
         initView(savedInstanceState);
     }
@@ -56,9 +49,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         isResume = true;
-        if (isHideNavigationBar()) {
-            hideNavigationBar();
-        }
     }
 
     @Override
@@ -68,38 +58,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (isHideNavigationBar()) {
-            hideNavigationBar();
-        }
-    }
-
-    protected void toast(final String message) {
-        mMainHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    protected void toast(final int resId) {
-        mMainHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(getApplicationContext(), resId, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    protected void toast(final String message, final int duration) {
-        mMainHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(getApplicationContext(), message, duration).show();
-            }
-        });
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     /**
@@ -112,50 +72,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * 全屏，隐藏状态栏
-     *
-     * @return true 隐藏状态栏,false 显示状态栏
-     */
-    public boolean isFullScreen() {
-        return false;
-    }
-
-    /**
-     * 全屏，隐藏导航栏
-     *
-     * @return true 隐藏导航栏,false 显示导航栏
-     */
-    public boolean isHideNavigationBar() {
-        return false;
-    }
-
-    /**
      * 设置横屏
      *
      * @return true 横屏显示,false 默认竖屏显示
      */
     public boolean isLandscape() {
         return false;
-    }
-
-    /**
-     * 此方法需要在setContentView()之后调用
-     */
-    @SuppressWarnings("deprecation")
-    private void fullScreen() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            WindowInsetsController controller = getWindow().getInsetsController();
-            if (controller != null) {
-                controller.hide(WindowInsets.Type.statusBars());
-            }
-        } else {
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        }
-    }
-
-    private void hideNavigationBar() {
-        StatusBarUtils.hideNavigationBar(this);
     }
 
     /**
@@ -169,10 +91,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 在setContentView之前执行
      */
     public void beforeSetContentView(@Nullable Bundle savedInstanceState) {
-        if (isFullScreen()) {
-            //隐藏标题栏
-            requestWindowFeature(Window.FEATURE_NO_TITLE);
-        }
+
     }
 
     /**

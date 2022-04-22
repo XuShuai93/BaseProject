@@ -1,5 +1,6 @@
-package com.adair.core2.base
+package com.adair.core2.base.fragment
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.adair.core.R
 import com.adair.core.utils.StatusBarUtils
+import com.adair.core2.base.dialog.DialogInterfaceProxyDialog
 import java.lang.reflect.Field
 
 /**
@@ -57,6 +59,10 @@ abstract class BaseDialogFragment : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, getStyle())
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return DialogInterfaceProxyDialog(requireContext(), theme)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

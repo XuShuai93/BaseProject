@@ -2,7 +2,7 @@ package com.adair.utilstest
 
 import android.content.Intent
 import android.os.Bundle
-import com.adair.core2.base.viewbinding.ui.BaseViewBindingActivity
+import com.adair.core2.base.activity.viewbinding.BaseViewBindingActivity
 import com.adair.utilstest.databinding.ActivityMainBinding
 
 class MainActivity : BaseViewBindingActivity<ActivityMainBinding>() {

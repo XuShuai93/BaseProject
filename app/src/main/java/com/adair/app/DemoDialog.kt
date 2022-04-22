@@ -2,7 +2,7 @@ package com.adair.app
 
 import android.os.Bundle
 import android.view.View
-import com.adair.core2.base.BaseDialogFragment
+import com.adair.core2.base.fragment.BaseDialogFragment
 
 /**
  *

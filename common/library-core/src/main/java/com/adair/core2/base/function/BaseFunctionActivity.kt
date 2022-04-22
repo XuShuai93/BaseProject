@@ -2,8 +2,7 @@ package com.adair.core2.base.function
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
-import com.adair.core2.base.BaseActivity
+import com.adair.core2.base.activity.BaseActivity
 
 /**
  * 可以添加公共功能的activity
