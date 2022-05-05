@@ -1,7 +1,6 @@
 package com.adair.core2.base.function
 
 import android.app.Activity
-import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 

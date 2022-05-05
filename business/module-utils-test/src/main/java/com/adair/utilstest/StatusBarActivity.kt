@@ -2,7 +2,7 @@ package com.adair.utilstest
 
 import android.graphics.Color
 import android.os.Bundle
-import com.adair.core2.base.activity.viewbinding.BaseViewBindingActivity
+import com.adair.core2.base.ui.activity.viewbinding.BaseViewBindingActivity
 import com.adair.utils.display.DisplayUtils
 import com.adair.utils.toast.ToastUtils
 import com.adair.utils.ui.StatusBarUtils

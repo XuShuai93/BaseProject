@@ -1,11 +1,11 @@
-package com.adair.core2.base.function
+package com.adair.core2.base.ui.fragment.function
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import com.adair.core2.base.BaseFragment
+import com.adair.core2.base.ui.fragment.BaseFragment
+import com.adair.core2.base.function.BaseFragmentFunction
+import com.adair.core2.base.function.FunctionsManager
 
 /**
  * 基础可添加功能的fragment

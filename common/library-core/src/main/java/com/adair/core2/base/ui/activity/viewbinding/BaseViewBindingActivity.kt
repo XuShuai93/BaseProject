@@ -1,10 +1,10 @@
-package com.adair.core2.base.activity.viewbinding
+package com.adair.core2.base.ui.activity.viewbinding
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.viewbinding.ViewBinding
-import com.adair.core2.base.function.BaseFunctionActivity
+import com.adair.core2.base.ui.activity.function.BaseFunctionActivity
 import com.adair.core2.base.viewbinding.IActivityViewBinding
 import java.lang.reflect.ParameterizedType
 

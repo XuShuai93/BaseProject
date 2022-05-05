@@ -1,4 +1,4 @@
-package com.adair.core2.base
+package com.adair.core2.base.ui.fragment
 
 import android.app.Activity
 import android.content.Context

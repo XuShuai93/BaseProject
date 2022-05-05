@@ -1,8 +1,10 @@
-package com.adair.core2.base.function
+package com.adair.core2.base.ui.activity.function
 
 import android.content.Intent
 import android.os.Bundle
-import com.adair.core2.base.activity.BaseActivity
+import com.adair.core2.base.ui.activity.BaseActivity
+import com.adair.core2.base.function.BaseActivityFunction
+import com.adair.core2.base.function.FunctionsManager
 
 /**
  * 可以添加公共功能的activity

@@ -1,4 +1,4 @@
-package com.adair.core2.base.fragment
+package com.adair.core2.base.ui.dialogfragment
 
 import android.app.Dialog
 import android.os.Bundle
@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.adair.core.R
 import com.adair.core.utils.StatusBarUtils
-import com.adair.core2.base.dialog.DialogInterfaceProxyDialog
+import com.adair.core2.base.ui.dialog.DialogInterfaceProxyDialog
 import java.lang.reflect.Field
 
 /**
@@ -218,5 +218,13 @@ abstract class BaseDialogFragment : DialogFragment() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    /**
+     * 当期弹窗是否显示
+     * @return Boolean true显示，false不显示
+     */
+    fun isShowing(): Boolean {
+        return dialog != null && dialog?.isShowing == true
     }
 }

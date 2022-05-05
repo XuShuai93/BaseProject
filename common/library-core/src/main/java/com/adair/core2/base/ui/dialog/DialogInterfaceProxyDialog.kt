@@ -1,4 +1,4 @@
-package com.adair.core2.base.dialog
+package com.adair.core2.base.ui.dialog
 
 import android.app.Dialog
 import android.content.Context

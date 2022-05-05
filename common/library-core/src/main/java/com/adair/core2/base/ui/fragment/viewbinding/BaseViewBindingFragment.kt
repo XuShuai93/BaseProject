@@ -1,4 +1,4 @@
-package com.adair.core2.base.viewbinding.ui
+package com.adair.core2.base.ui.fragment.viewbinding
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.adair.core.base.viewbinding.IFragmentViewBinding
-import com.adair.core2.base.function.BaseFunctionFragment
-import java.lang.reflect.InvocationTargetException
+import com.adair.core2.base.ui.fragment.function.BaseFunctionFragment
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -58,5 +57,10 @@ abstract class BaseViewBindingFragment<VB : ViewBinding> : BaseFunctionFragment(
             e.printStackTrace()
         }
         return null
+    }
+
+    override fun onDestroyView() {
+        _mBinding = null
+        super.onDestroyView()
     }
 }
