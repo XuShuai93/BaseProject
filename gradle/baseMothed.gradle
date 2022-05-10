@@ -15,7 +15,7 @@ static def dateTime() {
 }
 
 static def addRepositories(RepositoryHandler handler) {
-    addStandardRepos(handler)
+    addAliYunRepos(handler)
     addOtherRepos(handler)
 }
 

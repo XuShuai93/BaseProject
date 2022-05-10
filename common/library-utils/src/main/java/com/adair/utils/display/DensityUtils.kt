@@ -12,6 +12,7 @@ import android.view.WindowManager
  * @version v1.0
  * @date 2022/3/25 18:25
  */
+@Suppress("DEPRECATION")
 class DensityUtils {
     companion object {
 

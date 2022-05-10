@@ -137,9 +137,8 @@ ext {
             "mmkv"                         : "com.tencent:mmkv-static:1.2.10",
 
             //状态栏适配
-            "immersionbar"                 : "com.gyf.immersionbar:immersionbar:$versions.immersionbar",
-            "immersionbar-components"      : "com.gyf.immersionbar:immersionbar-components:$versions.immersionbar",
-            "immersionbar-ktx"             : "com.gyf.immersionbar:immersionbar-ktx:$versions.immersionbar",
+            "immersionbar"                 : "com.geyifeng.immersionbar:immersionbar:$versions.immersionbar",
+            "immersionbar-ktx"             : "com.geyifeng.immersionbar:immersionbar-ktx:$versions.immersionbar",
 
             //屏幕适配
             "autoSize"                     : "me.jessyan:autosize:1.2.1",

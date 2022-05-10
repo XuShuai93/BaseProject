@@ -13,7 +13,6 @@ apply from: rootProject.file('gradle/field.gradle')
 
 android {
     compileSdkVersion rootProject.ext.android_version.compileSdkVersion
-    buildToolsVersion rootProject.ext.android_version.buildToolsVersion
 
     defaultConfig {
         minSdkVersion rootProject.ext.android_version.minSdkVersion
@@ -76,11 +75,11 @@ android {
     }
 }
 
-repositories {
-    flatDir {
-        dirs 'libs'
-    }
-}
+//repositories {
+//    flatDir {
+//        dirs 'libs'
+//    }
+//}
 
 dependencies {
     testImplementation rootProject.ext.androidx["junit"]

@@ -7,6 +7,7 @@ android {
         //开启viewBinding
         viewBinding true
     }
+    namespace 'com.adair.core'
 }
 
 dependencies {
@@ -43,6 +44,5 @@ dependencies {
 
     //导航栏相关依赖
     api rootProject.ext.dependencie["immersionbar"]
-    api rootProject.ext.dependencie["immersionbar-components"]
     api rootProject.ext.dependencie["immersionbar-ktx"]
 }
