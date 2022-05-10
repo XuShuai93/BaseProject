@@ -2,7 +2,7 @@ package com.adair.utilstest
 
 import android.graphics.Color
 import android.os.Bundle
-import com.adair.core2.base.ui.activity.viewbinding.BaseViewBindingActivity
+import com.adair.core2.base.ui.activity.viewbinding.BaseVbActivity
 import com.adair.utils.display.DisplayUtils
 import com.adair.utils.toast.ToastUtils
 import com.adair.utils.ui.StatusBarUtils
@@ -10,7 +10,7 @@ import com.adair.utilstest.databinding.ActivityStatusBarBinding
 import com.orhanobut.logger.Logger
 import java.lang.StringBuilder
 
-class StatusBarActivity : BaseViewBindingActivity<ActivityStatusBarBinding>() {
+class StatusBarActivity : BaseVbActivity<ActivityStatusBarBinding>() {
     override fun initView(savedInstanceState: Bundle?) {
         ToastUtils.init(this)
 

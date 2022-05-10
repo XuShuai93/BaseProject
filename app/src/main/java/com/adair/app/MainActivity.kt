@@ -3,11 +3,11 @@ package com.adair.app
 import android.graphics.Color
 import android.os.Bundle
 import com.adair.app.databinding.ActivityMainBinding
-import com.adair.core2.base.ui.activity.viewbinding.BaseViewBindingActivity
+import com.adair.core2.base.ui.activity.viewbinding.BaseVbActivity
 import com.adair.utils.ui.StatusBarUtils
 import com.adair.utils.ui.SystemUiUtils
 
-class MainActivity : BaseViewBindingActivity<ActivityMainBinding>() {
+class MainActivity : BaseVbActivity<ActivityMainBinding>() {
     override fun initView(savedInstanceState: Bundle?) {
 
         mBinding.btnShowStatusBar.setOnClickListener {

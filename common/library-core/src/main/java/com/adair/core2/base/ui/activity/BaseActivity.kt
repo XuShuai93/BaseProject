@@ -39,7 +39,7 @@ abstract class BaseActivity : AppCompatActivity() {
         if (isLandscape()) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
         }
-        afterSetContentView(savedInstanceState)
+        beforeInitView(savedInstanceState)
         initView(savedInstanceState)
     }
 
@@ -142,8 +142,8 @@ abstract class BaseActivity : AppCompatActivity() {
     /**返回ContentView*/
     abstract fun getContentView(): View?
 
-    /**在setContentView之后执行*/
-    open fun afterSetContentView(savedInstanceState: Bundle?) {}
+    /**在initView方法之前执行*/
+    open fun beforeInitView(savedInstanceState: Bundle?) {}
 
     /**初始化View*/
     abstract fun initView(savedInstanceState: Bundle?)

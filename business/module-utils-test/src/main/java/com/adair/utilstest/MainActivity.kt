@@ -2,10 +2,10 @@ package com.adair.utilstest
 
 import android.content.Intent
 import android.os.Bundle
-import com.adair.core2.base.ui.activity.viewbinding.BaseViewBindingActivity
+import com.adair.core2.base.ui.activity.viewbinding.BaseVbActivity
 import com.adair.utilstest.databinding.ActivityMainBinding
 
-class MainActivity : BaseViewBindingActivity<ActivityMainBinding>() {
+class MainActivity : BaseVbActivity<ActivityMainBinding>() {
 
     override fun initView(savedInstanceState: Bundle?) {
         mBinding.btnStatusBar.setOnClickListener {

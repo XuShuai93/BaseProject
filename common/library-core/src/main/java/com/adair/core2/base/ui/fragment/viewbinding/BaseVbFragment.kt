@@ -17,7 +17,7 @@ import java.lang.reflect.ParameterizedType
  * @date   2022/3/26-17:04
  * @email  466911254@qq.com
  */
-abstract class BaseViewBindingFragment<VB : ViewBinding> : BaseFunctionFragment(), IFragmentViewBinding<VB> {
+abstract class BaseVbFragment<VB : ViewBinding> : BaseFunctionFragment(), IFragmentViewBinding<VB> {
 
     private var _mBinding: VB? = null
 

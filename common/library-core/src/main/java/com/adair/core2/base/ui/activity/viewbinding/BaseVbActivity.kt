@@ -16,7 +16,7 @@ import java.lang.reflect.ParameterizedType
  * @date   2022/3/26-16:47
  * @email  466911254@qq.com
  */
-abstract class BaseViewBindingActivity<VB : ViewBinding> : BaseFunctionActivity(), IActivityViewBinding<VB> {
+abstract class BaseVbActivity<VB : ViewBinding> : BaseFunctionActivity(), IActivityViewBinding<VB> {
 
     lateinit var mBinding: VB
 
