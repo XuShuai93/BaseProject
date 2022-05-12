@@ -3,13 +3,16 @@ package com.adair.app
 import android.graphics.Color
 import android.os.Bundle
 import com.adair.app.databinding.ActivityMainBinding
-import com.adair.core2.base.ui.activity.viewbinding.BaseVbActivity
+import com.adair.core2.base.ui.viewbinding.BaseVbActivity
+import com.adair.core2.ktx.isShowing
 import com.adair.utils.ui.StatusBarUtils
 import com.adair.utils.ui.SystemUiUtils
 
 class MainActivity : BaseVbActivity<ActivityMainBinding>() {
-    override fun initView(savedInstanceState: Bundle?) {
 
+    var demoDialog:DemoDialog?=null
+
+    override fun initView(savedInstanceState: Bundle?) {
         mBinding.btnShowStatusBar.setOnClickListener {
             StatusBarUtils.showStatusBar(window)
         }

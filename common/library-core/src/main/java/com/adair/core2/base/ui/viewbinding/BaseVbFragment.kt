@@ -1,17 +1,16 @@
-package com.adair.core2.base.ui.fragment.viewbinding
+package com.adair.core2.base.ui.viewbinding
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
-import com.adair.core.base.viewbinding.IFragmentViewBinding
-import com.adair.core2.base.ui.fragment.function.BaseFunctionFragment
+import com.adair.core2.base.ui.function.BaseFunctionFragment
 import java.lang.reflect.ParameterizedType
 
 /**
  *
- * 集成ViewBinding功能的Fragment基类
+ * 集成ViewBinding功能的Fragment基类,VB也可以使用DataBinding
  *
  * @author xushuai
  * @date   2022/3/26-17:04
@@ -20,8 +19,7 @@ import java.lang.reflect.ParameterizedType
 abstract class BaseVbFragment<VB : ViewBinding> : BaseFunctionFragment(), IFragmentViewBinding<VB> {
 
     private var _mBinding: VB? = null
-
-    protected val mBinding = _mBinding!!
+    protected val mBinding get() = _mBinding!!
 
     override fun getContentLayoutId(): Int {
         return 0
@@ -44,8 +42,8 @@ abstract class BaseVbFragment<VB : ViewBinding> : BaseFunctionFragment(), IFragm
         try {
             val type = javaClass.genericSuperclass
             if (type is ParameterizedType) {
-                val clazz = type.actualTypeArguments[0] as Class<VB>
-                val method = clazz.getDeclaredMethod(
+                val vbClass = type.actualTypeArguments.filterIsInstance<Class<VB>>()
+                val method = vbClass[0].getDeclaredMethod(
                     "inflate",
                     LayoutInflater::class.java,
                     ViewGroup::class.java,

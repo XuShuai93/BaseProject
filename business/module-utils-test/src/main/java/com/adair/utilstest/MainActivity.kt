@@ -2,13 +2,20 @@ package com.adair.utilstest
 
 import android.content.Intent
 import android.os.Bundle
-import com.adair.core2.base.ui.activity.viewbinding.BaseVbActivity
+import androidx.databinding.DataBindingUtil
+import com.adair.core2.base.ui.vbvm.BaseVbVmActivity
+import com.adair.core2.base.ui.viewbinding.BaseVbActivity
+import com.adair.utils.UtilsManager
 import com.adair.utilstest.databinding.ActivityMainBinding
+import com.adair.utilstest.viewmodel.MainViewModel
 
-class MainActivity : BaseVbActivity<ActivityMainBinding>() {
+class MainActivity : BaseVbVmActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun initView(savedInstanceState: Bundle?) {
+        UtilsManager.init(application = application)
+
         mBinding.btnStatusBar.setOnClickListener {
+//            mViewModel.toast()
             startActivity(Intent(this, StatusBarActivity::class.java))
         }
         mBinding.btnNavigationBar.setOnClickListener {

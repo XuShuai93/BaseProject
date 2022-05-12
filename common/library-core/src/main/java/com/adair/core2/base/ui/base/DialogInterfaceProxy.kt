@@ -1,4 +1,4 @@
-package com.adair.core2.base.ui.dialog
+package com.adair.core2.base.ui.base
 
 import android.content.DialogInterface
 import java.lang.ref.WeakReference

@@ -1,15 +1,15 @@
-package com.adair.core2.base.ui.activity.viewbinding
+package com.adair.core2.base.ui.viewbinding
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.databinding.ViewDataBinding
 import androidx.viewbinding.ViewBinding
-import com.adair.core2.base.ui.activity.function.BaseFunctionActivity
-import com.adair.core2.base.viewbinding.IActivityViewBinding
+import com.adair.core2.base.ui.function.BaseFunctionActivity
 import java.lang.reflect.ParameterizedType
 
 /**
- * 自动实现ViewBinding功能的Activity基础类
+ * 自动实现ViewBinding功能的Activity基础类,VB也可以使用DataBinding
  *
  *
  * @author xushuai
@@ -18,7 +18,7 @@ import java.lang.reflect.ParameterizedType
  */
 abstract class BaseVbActivity<VB : ViewBinding> : BaseFunctionActivity(), IActivityViewBinding<VB> {
 
-    lateinit var mBinding: VB
+    protected lateinit var mBinding: VB
 
     override fun beforeSetContentView(savedInstanceState: Bundle?) {
         super.beforeSetContentView(savedInstanceState)
@@ -48,8 +48,8 @@ abstract class BaseVbActivity<VB : ViewBinding> : BaseFunctionActivity(), IActiv
         try {
             val type = javaClass.genericSuperclass
             if (type is ParameterizedType) {
-                val clazz = type.actualTypeArguments[0] as Class<VB>
-                val method = clazz.getDeclaredMethod("inflate", LayoutInflater::class.java)
+                val vbClass = type.actualTypeArguments.filterIsInstance<Class<VB>>()
+                val method = vbClass[0].getDeclaredMethod("inflate", LayoutInflater::class.java)
                 return method.invoke(null, inflater) as VB
             }
         } catch (e: Exception) {

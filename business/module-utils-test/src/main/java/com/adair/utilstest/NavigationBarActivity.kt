@@ -2,7 +2,7 @@ package com.adair.utilstest
 
 import android.app.AlertDialog
 import android.os.Bundle
-import com.adair.core2.base.ui.activity.viewbinding.BaseVbActivity
+import com.adair.core2.base.ui.viewbinding.BaseVbActivity
 import com.adair.utils.ui.NavigationBarUtils
 import com.adair.utilstest.databinding.ActivityNavigationBarBinding
 

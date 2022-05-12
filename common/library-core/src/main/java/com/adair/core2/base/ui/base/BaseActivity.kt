@@ -1,4 +1,4 @@
-package com.adair.core2.base.ui.activity
+package com.adair.core2.base.ui.base
 
 import android.content.Intent
 import android.content.pm.ActivityInfo

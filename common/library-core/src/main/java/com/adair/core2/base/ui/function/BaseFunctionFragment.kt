@@ -1,11 +1,9 @@
-package com.adair.core2.base.ui.fragment.function
+package com.adair.core2.base.ui.function
 
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import com.adair.core2.base.ui.fragment.BaseFragment
-import com.adair.core2.base.function.BaseFragmentFunction
-import com.adair.core2.base.function.FunctionsManager
+import com.adair.core2.base.ui.base.BaseFragment
 
 /**
  * 基础可添加功能的fragment

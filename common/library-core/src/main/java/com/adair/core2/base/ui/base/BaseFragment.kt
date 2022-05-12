@@ -1,4 +1,4 @@
-package com.adair.core2.base.ui.fragment
+package com.adair.core2.base.ui.base
 
 import android.app.Activity
 import android.content.Context
@@ -58,6 +58,7 @@ abstract class BaseFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        beforeInitView(view, savedInstanceState)
         initView(view, savedInstanceState)
         mInitView = true
     }
@@ -107,6 +108,11 @@ abstract class BaseFragment : Fragment() {
     /**返回布局Layout*/
     @LayoutRes
     abstract fun getContentLayoutId(): Int
+
+
+    open fun beforeInitView(view: View, savedInstanceState: Bundle?) {
+
+    }
 
     /** 初始化View */
     abstract fun initView(view: View, savedInstanceState: Bundle?)

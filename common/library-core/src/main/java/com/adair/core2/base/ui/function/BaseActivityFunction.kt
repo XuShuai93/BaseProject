@@ -1,4 +1,4 @@
-package com.adair.core2.base.function
+package com.adair.core2.base.ui.function
 
 import android.app.Activity
 import android.content.Intent

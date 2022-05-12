@@ -1,4 +1,4 @@
-package com.adair.core2.base.viewbinding
+package com.adair.core2.base.ui.viewbinding
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
