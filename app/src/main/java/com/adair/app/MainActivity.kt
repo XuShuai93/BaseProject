@@ -10,11 +10,12 @@ import com.adair.utils.ui.SystemUiUtils
 
 class MainActivity : BaseVbActivity<ActivityMainBinding>() {
 
-    var demoDialog:DemoDialog?=null
+    var demoDialog: DemoDialog? = null
 
     override fun initView(savedInstanceState: Bundle?) {
         mBinding.btnShowStatusBar.setOnClickListener {
-            StatusBarUtils.showStatusBar(window)
+//            StatusBarUtils.showStatusBar(window)
+            showDialog()
         }
 
         mBinding.btn1.setOnClickListener {
@@ -48,24 +49,11 @@ class MainActivity : BaseVbActivity<ActivityMainBinding>() {
     private fun showDialog() {
         val dialog = DemoDialog.newInstance().apply {
             setFullScreen(true)
-            setHidNavigationBar(true)
             setBackgroundDimEnable(true)
             setWindowSize(-1, -1)
             setBackgroundDimAmount(0.7f)
 //            setWindowPadding(20.dp2Px, 20.dp2Px, 20.dp2Px, 20.dp2Px)
             show(supportFragmentManager, "DemoDialog")
         }
-    }
-
-    override fun isHideStatusBar(): Boolean {
-        return false
-    }
-
-    override fun isHideNavigationBar(): Boolean {
-        return false
-    }
-
-    override fun isLandscape(): Boolean {
-        return false
     }
 }

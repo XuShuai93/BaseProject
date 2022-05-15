@@ -33,12 +33,6 @@ abstract class BaseActivity : AppCompatActivity() {
         } else if (getContentView() != null) {
             setContentView(getContentView())
         }
-        if (isHideStatusBar()) {
-            fullScreen()
-        }
-        if (isLandscape()) {
-            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
-        }
         beforeInitView(savedInstanceState)
         initView(savedInstanceState)
     }
@@ -51,9 +45,6 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         mResume = true
-        if (isHideNavigationBar()) {
-            hideNavigationBar()
-        }
     }
 
     override fun onPause() {
@@ -61,79 +52,11 @@ abstract class BaseActivity : AppCompatActivity() {
         mResume = false
     }
 
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        if (isHideNavigationBar()) {
-            hideNavigationBar()
-        }
-    }
-
-    /**
-     * 此方法需要在setContentView()之后调用
-     */
-    private fun fullScreen() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            val controller = window.insetsController
-            controller?.hide(WindowInsets.Type.statusBars())
-        } else {
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
-        }
-    }
-
-    private fun hideNavigationBar() {
-        StatusBarUtils.hideNavigationBar(this)
-    }
-
     /**执行在super.onCreate(savedInstanceState)之前*/
     open fun beforeSuperOnCreate(savedInstanceState: Bundle?) {}
 
     /**在setContentView之前执行*/
-    open fun beforeSetContentView(savedInstanceState: Bundle?) {
-        if (isHideStatusBar()) {
-            //隐藏标题栏
-            requestWindowFeature(Window.FEATURE_NO_TITLE)
-        }
-    }
-
-    /**
-     * 是否在Resume显示期间
-     *
-     * @return true 在Resume期间
-     */
-    fun isResume(): Boolean {
-        return mResume
-    }
-
-    /**
-     * 隐藏状态栏
-     *
-     * @return true 隐藏状态栏,false 显示状态栏
-     */
-    open fun isHideStatusBar(): Boolean {
-        return false
-    }
-
-
-    /**
-     * 隐藏导航栏
-     *
-     * @return true 隐藏导航栏,false 显示导航栏
-     */
-    open fun isHideNavigationBar(): Boolean {
-        return false
-    }
-
-    /**
-     * 设置横屏
-     *
-     * @return true 横屏显示,false 默认竖屏显示
-     */
-    open fun isLandscape(): Boolean {
-        return false
-    }
+    open fun beforeSetContentView(savedInstanceState: Bundle?) {}
 
     /**返回布局Layout*/
     @LayoutRes
@@ -147,4 +70,13 @@ abstract class BaseActivity : AppCompatActivity() {
 
     /**初始化View*/
     abstract fun initView(savedInstanceState: Bundle?)
+
+    /**
+     * 是否在Resume显示期间
+     *
+     * @return true 在Resume期间
+     */
+    fun isResume(): Boolean {
+        return mResume
+    }
 }
