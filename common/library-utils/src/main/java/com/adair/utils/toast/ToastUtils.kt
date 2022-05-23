@@ -5,7 +5,6 @@ import android.content.Context
 import android.os.Build
 import android.os.Handler
 import android.widget.Toast
-import com.adair.utils.AppInject
 import java.lang.reflect.Field
 
 /**

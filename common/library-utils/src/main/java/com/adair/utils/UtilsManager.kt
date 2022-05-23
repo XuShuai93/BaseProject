@@ -17,7 +17,6 @@ class UtilsManager private constructor() {
     companion object {
         @JvmStatic
         fun init(application: Application) {
-            AppInject.init(application)
             CrashHandler.init(application)
             ToastUtils.init(application)
             ActivityStackManager.init(application)
