@@ -12,11 +12,11 @@ apply from: rootProject.file('gradle/field.gradle')
 
 
 android {
-    compileSdkVersion rootProject.ext.android_version.compileSdkVersion
+    compileSdk rootProject.ext.android_version.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion rootProject.ext.android_version.minSdkVersion
-        targetSdkVersion rootProject.ext.android_version.targetSdkVersion
+        minSdk rootProject.ext.android_version.minSdkVersion
+        targetSdk rootProject.ext.android_version.targetSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro", "proguard-rules.pro"

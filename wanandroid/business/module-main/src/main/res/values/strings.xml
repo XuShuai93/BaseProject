@@ -1,0 +1,14 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" tools:ignore="ResourceName">WanAndroid</string>
+    <string name="main_splash_logo">WanAndroid</string>
+
+
+    <string name="main_title_home">主页</string>
+    <string name="main_title_knowledge">体系</string>
+    <string name="main_title_navigation">导航</string>
+    <string name="main_title_question">问答</string>
+    <string name="main_title_mine">我的</string>
+    <string name="main_title_official_accounts">公众号</string>
+    <string name="main_title_project">项目</string>
+
+</resources>

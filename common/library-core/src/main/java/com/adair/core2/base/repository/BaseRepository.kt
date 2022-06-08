@@ -7,5 +7,5 @@ package com.adair.core2.base.repository
  * @version v1.0
  * @date 2022/5/17 17:34
  */
-class BaseRepository {
+open class BaseRepository {
 }

@@ -1,0 +1,16 @@
+apply from: rootProject.file('gradle/library.gradle')
+
+android {
+    defaultConfig {
+
+    }
+
+    resourcePrefix "middle_"
+}
+
+dependencies {
+    api project(path: ':common:library-core')
+    api project(path: ':common:library-utils')
+    api project(path: ':common:library-mmkv-ktx')
+    api rootProject.ext.dependencie["arouter-api"]
+}

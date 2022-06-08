@@ -1,0 +1,14 @@
+apply plugin: "com.android.application"
+apply from: rootProject.file('gradle/common.gradle')
+
+android {
+    defaultConfig {
+        applicationId "com.adair.wanandroid"
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+dependencies {
+    implementation project(path: ':wanandroid:business:module-main')
+}

@@ -13,55 +13,55 @@ import android.os.Bundle
  */
 open class BaseActivityFunction {
 
-    fun onNewIntent(activity: Activity, intent: Intent?) {
+    open fun onNewIntent(activity: Activity, intent: Intent?) {
 
     }
 
-    fun onCreated(activity: Activity, savedInstanceState: Bundle?) {
+    open fun onCreated(activity: Activity, savedInstanceState: Bundle?) {
 
     }
 
-    fun onRestarted(activity: Activity) {
+    open fun onRestarted(activity: Activity) {
 
     }
 
-    fun onStarted(activity: Activity) {
+    open fun onStarted(activity: Activity) {
 
     }
 
-    fun onResumed(activity: Activity) {
+    open fun onResumed(activity: Activity) {
 
     }
 
-    fun onActivityResult(activity: Activity,requestCode: Int, resultCode: Int, data: Intent?) {
+    open fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent?) {
 
     }
 
-    fun onPaused(activity: Activity) {
+    open fun onPaused(activity: Activity) {
 
     }
 
-    fun onStopped(activity: Activity) {
+    open fun onStopped(activity: Activity) {
 
     }
 
-    fun onSaveInstanceState(activity: Activity, outState: Bundle) {
+    open fun onSaveInstanceState(activity: Activity, outState: Bundle) {
 
     }
 
-    fun onRestoreInstanceState(activity: Activity, savedInstanceState: Bundle) {
+    open fun onRestoreInstanceState(activity: Activity, savedInstanceState: Bundle) {
 
     }
 
-    fun onDestroyed(activity: Activity) {
+    open fun onDestroyed(activity: Activity) {
 
     }
 
-    fun onFinish(activity: Activity) {
+    open fun onFinish(activity: Activity) {
 
     }
 
-    fun onWindowFocusChanged(activity: Activity, hasFocus: Boolean) {
+    open fun onWindowFocusChanged(activity: Activity, hasFocus: Boolean) {
 
     }
 }

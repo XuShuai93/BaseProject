@@ -44,6 +44,7 @@ abstract class BaseVbActivity<VB : ViewBinding> : BaseFunctionActivity(), IActiv
         return null
     }
 
+    @Suppress("UNCHECKED_CAST")
     override fun createViewBindingByReflect(inflater: LayoutInflater): VB? {
         try {
             val type = javaClass.genericSuperclass

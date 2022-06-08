@@ -13,28 +13,28 @@ import androidx.fragment.app.FragmentManager
  * @version v1.0
  * @date 2021/11/5 10:09
  */
-class BaseFragmentFunction {
-    fun onAttached(manager: FragmentManager, fragment: Fragment, context: Context) {}
+open class BaseFragmentFunction {
+    open fun onAttached(manager: FragmentManager, fragment: Fragment, context: Context) {}
 
-    fun onCreated(manager: FragmentManager, fragment: Fragment, savedInstanceState: Bundle?) {}
+    open fun onCreated(manager: FragmentManager, fragment: Fragment, savedInstanceState: Bundle?) {}
 
-    fun onViewCreated(manager: FragmentManager, fragment: Fragment, iew: View, savedInstanceState: Bundle?) {}
+    open fun onViewCreated(manager: FragmentManager, fragment: Fragment, iew: View, savedInstanceState: Bundle?) {}
 
-    fun onStarted(manager: FragmentManager, fragment: Fragment) {}
+    open fun onStarted(manager: FragmentManager, fragment: Fragment) {}
 
-    fun onResumed(manager: FragmentManager, fragment: Fragment) {}
+    open fun onResumed(manager: FragmentManager, fragment: Fragment) {}
 
-    fun onPaused(manager: FragmentManager, fragment: Fragment) {}
+    open fun onPaused(manager: FragmentManager, fragment: Fragment) {}
 
-    fun onStopped(manager: FragmentManager, fragment: Fragment) {}
+    open fun onStopped(manager: FragmentManager, fragment: Fragment) {}
 
-    fun onViewDestroyed(manager: FragmentManager, fragment: Fragment) {}
+    open fun onViewDestroyed(manager: FragmentManager, fragment: Fragment) {}
 
-    fun onDestroyed(manager: FragmentManager, fragment: Fragment) {}
+    open fun onDestroyed(manager: FragmentManager, fragment: Fragment) {}
 
-    fun onDetached(manager: FragmentManager, fragment: Fragment) {}
+    open fun onDetached(manager: FragmentManager, fragment: Fragment) {}
 
-    fun onSaveInstanceStated(manager: FragmentManager, fragment: Fragment, outState: Bundle) {}
+    open fun onSaveInstanceStated(manager: FragmentManager, fragment: Fragment, outState: Bundle) {}
 
-    fun setUserVisibleHinted(manager: FragmentManager, fragment: Fragment, isVisibleToUser: Boolean) {}
+    open fun setUserVisibleHinted(manager: FragmentManager, fragment: Fragment, isVisibleToUser: Boolean) {}
 }
