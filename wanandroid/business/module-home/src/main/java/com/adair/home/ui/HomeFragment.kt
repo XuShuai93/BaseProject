@@ -3,7 +3,7 @@ package com.adair.home.ui
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
-import com.adair.core2.base.ui.vbvm.BaseVbVmFragment
+import com.adair.core.base.ui.vbvm.BaseVbVmFragment
 import com.adair.home.databinding.HomeFragHomeBinding
 import com.adair.home.viewmodel.HomeViewModel
 import com.adair.middle.viewmodel.MainShareViewModel

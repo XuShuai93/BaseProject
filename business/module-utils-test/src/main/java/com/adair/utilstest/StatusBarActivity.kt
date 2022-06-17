@@ -2,9 +2,9 @@ package com.adair.utilstest
 
 import android.graphics.Color
 import android.os.Bundle
-import com.adair.core2.base.ui.viewbinding.BaseVbActivity
+import com.adair.core.base.ui.viewbinding.BaseVbActivity
 import com.adair.utils.display.DisplayUtils
-import com.adair.utils.toast.ToastUtils
+import com.adair.core.utils.toast.ToastUtils
 import com.adair.utils.ui.StatusBarUtils
 import com.adair.utilstest.databinding.ActivityStatusBarBinding
 import com.orhanobut.logger.Logger
@@ -52,7 +52,7 @@ class StatusBarActivity : BaseVbActivity<ActivityStatusBarBinding>() {
         }
 
         mBinding.btnStatusBarIsShow.setOnClickListener {
-            ToastUtils.showToast("状态栏显示:${StatusBarUtils.isShowStatusBar(window)}")
+            ToastUtils.show("状态栏显示:${StatusBarUtils.isShowStatusBar(window)}")
         }
     }
 

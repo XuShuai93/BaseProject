@@ -3,8 +3,7 @@ package com.adair.app
 import android.graphics.Color
 import android.os.Bundle
 import com.adair.app.databinding.ActivityMainBinding
-import com.adair.core2.base.ui.viewbinding.BaseVbActivity
-import com.adair.core2.ktx.isShowing
+import com.adair.core.base.ui.viewbinding.BaseVbActivity
 import com.adair.utils.ui.StatusBarUtils
 import com.adair.utils.ui.SystemUiUtils
 

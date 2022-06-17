@@ -3,7 +3,7 @@ package com.adair.main.ui
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.adair.core2.base.ui.viewbinding.BaseVbActivity
+import com.adair.core.base.ui.viewbinding.BaseVbActivity
 import com.adair.main.databinding.MainActivitySplashBinding
 import com.adair.middle.router.RouterPath
 import com.alibaba.android.arouter.facade.annotation.Route

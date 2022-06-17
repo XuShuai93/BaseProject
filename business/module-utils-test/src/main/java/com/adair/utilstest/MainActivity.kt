@@ -2,9 +2,7 @@ package com.adair.utilstest
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
-import com.adair.core2.base.ui.vbvm.BaseVbVmActivity
-import com.adair.core2.base.ui.viewbinding.BaseVbActivity
+import com.adair.core.base.ui.vbvm.BaseVbVmActivity
 import com.adair.utils.UtilsManager
 import com.adair.utilstest.databinding.ActivityMainBinding
 import com.adair.utilstest.dialog.TestStyleDialog

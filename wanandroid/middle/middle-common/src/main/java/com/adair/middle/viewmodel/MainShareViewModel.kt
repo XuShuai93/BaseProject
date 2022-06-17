@@ -2,7 +2,7 @@ package com.adair.middle.viewmodel
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
-import com.adair.core2.base.viewmodel.BaseViewModel
+import com.adair.core.base.viewmodel.BaseViewModel
 
 /**
  *

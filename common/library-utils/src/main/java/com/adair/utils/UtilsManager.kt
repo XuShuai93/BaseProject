@@ -1,9 +1,7 @@
 package com.adair.utils
 
 import android.app.Application
-import com.adair.utils.activity.ActivityStackManager
-import com.adair.utils.crash.CrashHandler
-import com.adair.utils.toast.ToastUtils
+import com.adair.core.utils.toast.ToastUtils
 
 /**
  * 工具library 管理
@@ -17,9 +15,7 @@ class UtilsManager private constructor() {
     companion object {
         @JvmStatic
         fun init(application: Application) {
-            CrashHandler.init(application)
             ToastUtils.init(application)
-            ActivityStackManager.init(application)
         }
     }
 }

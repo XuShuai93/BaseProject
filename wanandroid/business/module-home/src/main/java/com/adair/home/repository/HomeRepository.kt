@@ -1,6 +1,6 @@
 package com.adair.home.repository
 
-import com.adair.core2.base.repository.BaseRepository
+import com.adair.core.base.repository.BaseRepository
 
 
 /**

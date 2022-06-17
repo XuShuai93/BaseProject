@@ -2,8 +2,8 @@ package com.adair.utilstest.viewmodel
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
-import com.adair.core2.base.viewmodel.BaseViewModel
-import com.adair.utils.toast.ToastUtils
+import com.adair.core.base.viewmodel.BaseViewModel
+import com.adair.core.utils.toast.ToastUtils
 
 /**
  *
@@ -20,7 +20,7 @@ class MainViewModel : BaseViewModel() {
 
 
     fun toast() {
-        ToastUtils.showToast("11111111")
+        ToastUtils.show("11111111")
     }
 
 }

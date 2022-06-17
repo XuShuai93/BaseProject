@@ -1,14 +1,16 @@
 package com.adair.main.ui
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.lifecycle.ViewModelProvider
-import com.adair.core2.base.ui.viewbinding.BaseVbActivity
+import com.adair.core.base.ui.viewbinding.BaseVbActivity
 import com.adair.main.R
 import com.adair.main.databinding.MainActivityMainBinding
 import com.adair.middle.router.RouterPath
 import com.adair.middle.viewmodel.MainShareViewModel
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.gyf.immersionbar.ImmersionBar
+import java.lang.RuntimeException
 
 /**
  *
@@ -34,6 +36,8 @@ class MainActivity : BaseVbActivity<MainActivityMainBinding>() {
     override fun initView(savedInstanceState: Bundle?) {
         mMainShareViewModel = ViewModelProvider(this).get(MainShareViewModel::class.java)
         lifecycle.addObserver(mMainShareViewModel)
-
+        Handler().postDelayed({
+            throw RuntimeException("testCrashHandler")
+        }, 3000)
     }
 }

@@ -3,7 +3,7 @@ package com.adair.utilstest.dialog
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
-import com.adair.core2.base.ui.viewbinding.BaseVbDialogFragment
+import com.adair.core.base.ui.viewbinding.BaseVbDialogFragment
 import com.adair.utilstest.databinding.DialogTestStyleBinding
 import com.gyf.immersionbar.ImmersionBar
 
