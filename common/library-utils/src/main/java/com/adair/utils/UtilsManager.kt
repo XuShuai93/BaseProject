@@ -1,7 +1,6 @@
 package com.adair.utils
 
 import android.app.Application
-import com.adair.core.utils.toast.ToastUtils
 
 /**
  * 工具library 管理
@@ -15,7 +14,6 @@ class UtilsManager private constructor() {
     companion object {
         @JvmStatic
         fun init(application: Application) {
-            ToastUtils.init(application)
         }
     }
 }
