@@ -9,7 +9,7 @@ android {
     compileSdkVersion rootProject.ext.android_version.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion rootProject.ext.android_version.minSdkVersion
+        minSdkVersion 19
         targetSdkVersion rootProject.ext.android_version.targetSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

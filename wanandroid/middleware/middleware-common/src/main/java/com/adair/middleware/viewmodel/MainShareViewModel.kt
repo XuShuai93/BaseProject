@@ -1,4 +1,4 @@
-package com.adair.middle.viewmodel
+package com.adair.middleware.viewmodel
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -12,7 +12,7 @@ import com.adair.core.base.viewmodel.BaseViewModel
  * @date   2022/5/29-18:47
  * @email  466911254@qq.com
  */
-class MainShareViewModel: BaseViewModel() {
+class MainShareViewModel : BaseViewModel() {
     override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
 
     }

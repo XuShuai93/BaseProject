@@ -10,5 +10,7 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':wanandroid:middle:middle-common')
+    implementation project(path: ':wanandroid:middleware:middleware-common')
 }
+
+

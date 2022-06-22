@@ -1,4 +1,4 @@
-package com.adair.middle.app
+package com.adair.middleware.app
 
 import com.adair.core.base.application.BaseApplication
 import com.alibaba.android.arouter.launcher.ARouter

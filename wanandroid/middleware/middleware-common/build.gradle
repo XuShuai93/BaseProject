@@ -5,7 +5,7 @@ android {
 
     }
 
-    resourcePrefix "middle_"
+    resourcePrefix "middleware_"
 }
 
 dependencies {

@@ -64,6 +64,8 @@ abstract class BaseFragment : Fragment() {
         mInitView = true
     }
 
+    @Deprecated("Deprecated in Java")
+    @Suppress("DEPRECATION")
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
         mIsVisibleToUser = isVisibleToUser

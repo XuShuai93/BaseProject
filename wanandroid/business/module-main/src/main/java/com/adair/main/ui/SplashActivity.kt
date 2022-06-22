@@ -5,7 +5,7 @@ import android.os.Handler
 import android.os.Looper
 import com.adair.core.base.ui.viewbinding.BaseVbActivity
 import com.adair.main.databinding.MainActivitySplashBinding
-import com.adair.middle.router.RouterPath
+import com.adair.middleware.router.RouterPath
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.gyf.immersionbar.BarHide

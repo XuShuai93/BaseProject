@@ -1,4 +1,4 @@
-package com.adair.middle.router
+package com.adair.middleware.router
 
 /**
  *

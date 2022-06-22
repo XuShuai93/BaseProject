@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.adair.core.base.ui.vbvm.BaseVbVmFragment
 import com.adair.home.databinding.HomeFragHomeBinding
 import com.adair.home.viewmodel.HomeViewModel
-import com.adair.middle.viewmodel.MainShareViewModel
+import com.adair.middleware.viewmodel.MainShareViewModel
 
 /**
  *
