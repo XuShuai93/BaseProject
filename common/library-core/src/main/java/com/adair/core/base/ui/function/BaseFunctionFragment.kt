@@ -96,6 +96,8 @@ abstract class BaseFunctionFragment : BaseFragment() {
         }
     }
 
+    @Suppress("DEPRECATION")
+    @Deprecated("Deprecated in Java")
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
         for (function in functions) {
@@ -108,5 +110,9 @@ abstract class BaseFunctionFragment : BaseFragment() {
      */
     open fun addFunctions() {
 
+    }
+
+    fun addFunction(function: BaseFragmentFunction) {
+        functions.add(function)
     }
 }

@@ -114,4 +114,8 @@ abstract class BaseFunctionActivity : BaseActivity() {
      * 添加界面单独的功能
      */
     open fun addFunctions() {}
+
+    fun addFunction(function: BaseActivityFunction) {
+        functions.add(function)
+    }
 }

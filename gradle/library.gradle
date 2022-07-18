@@ -6,11 +6,11 @@ apply plugin: 'kotlin-parcelize'
 
 android {
 
-    compileSdkVersion rootProject.ext.android_version.compileSdkVersion
+    compileSdk rootProject.ext.android_version.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion rootProject.ext.android_version.targetSdkVersion
+        minSdk 19
+        targetSdk rootProject.ext.android_version.targetSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro", "proguard-rules.pro"

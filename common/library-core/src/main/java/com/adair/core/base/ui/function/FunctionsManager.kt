@@ -9,17 +9,17 @@ package com.adair.core.base.ui.function
  */
 object FunctionsManager {
 
-    private val activityFunctionClassList: MutableList<Class<in BaseActivityFunction>> = mutableListOf()
-    private val fragmentFunctionClassList: MutableList<Class<in BaseFragmentFunction>> = arrayListOf()
+    private val activityFunctionClassList: MutableList<Class<out BaseActivityFunction>> = mutableListOf()
+    private val fragmentFunctionClassList: MutableList<Class<out BaseFragmentFunction>> = arrayListOf()
 
 
     /** 添加activity公共的功能类路径，全路径 */
-    fun addCommonActivityFunctionClassPath(className: Class<in BaseActivityFunction>) {
+    fun addCommonActivityFunctionClassPath(className: Class<out BaseActivityFunction>) {
         activityFunctionClassList.add(className)
     }
 
     /** 添加fragment 功能类，全路径 */
-    fun addFragmentActivityFunctionClassPath(className: Class<in BaseFragmentFunction>) {
+    fun addFragmentActivityFunctionClassPath(className: Class<out BaseFragmentFunction>) {
         fragmentFunctionClassList.add(className)
     }
 
